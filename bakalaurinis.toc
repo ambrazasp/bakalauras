@@ -1,0 +1,61 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {lithuanian}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Įvadas}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Gestų kalba}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Gestų kalbos specifika}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Darbo tikslas}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Darbo uždaviniai}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Darbo eiga}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Panaudotos priemonės}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.}Apsimokančios sistemos}{7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.}Prižiūrimas mokymas}{7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.}Neprižiūrimas mokymas}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3.}Praktinis mokymas}{9}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.}Neuroniniai tinklai}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.}Konvoliuciniai neuroniniai tinklai}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.}Rekurentiniai neuroniniai tinklai}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.}Poskyris}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.1.1.}Skirsnis}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {4.1.1.1.}Straipsnis}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {4.1.2.}Skirsnis}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.}Skyrius}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.}Poskyris}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.}Poskyris}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Rezultatai ir išvados}{14}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatūra}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Santrumpos}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\MakeUppercase {Priedai}}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{2 priedas.\nobreakspace {}Eksperimentinio palyginimo rezultatai}{18}
