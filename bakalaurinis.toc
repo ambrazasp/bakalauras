@@ -26,36 +26,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.}Neuroniniai tinklai}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.}Konvoliuciniai neuroniniai tinklai}{10}
+\contentsline {subsection}{\numberline {2.1.}Dirbtiniai neuroniniai tinklai}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.}Rekurentiniai neuroniniai tinklai}{10}
+\contentsline {subsection}{\numberline {2.2.}Daugiasluosknis perceptronas}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{11}
+\contentsline {subsection}{\numberline {2.3.}Konvoliuciniai neuroniniai tinklai}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{12}
+\contentsline {subsection}{\numberline {2.4.}Rekurentiniai neuroniniai tinklai}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.}Poskyris}{12}
+\contentsline {subsection}{\numberline {2.5.}Apjungiamieji tinklų modeliai}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1.}Skirsnis}{12}
+\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {4.1.1.1.}Straipsnis}{12}
+\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2.}Skirsnis}{12}
+\contentsline {section}{Rezultatai ir išvados}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.}Skyrius}{13}
+\contentsline {section}{Literatūra}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.}Poskyris}{13}
+\contentsline {section}{Santrumpos}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.}Poskyris}{13}
+\contentsline {section}{\MakeUppercase {Priedai}}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Rezultatai ir išvados}{14}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatūra}{15}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{16}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{16}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{17}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{2 priedas.\nobreakspace {}Eksperimentinio palyginimo rezultatai}{18}
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{18}

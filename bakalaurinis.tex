@@ -17,6 +17,8 @@
 
 
 \renewcommand\theadfont{\bfseries}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
 
 % Titulinio aprašas
 \university{Vilniaus universitetas}
@@ -143,7 +145,7 @@ Darbo įvadas neturi būti dėstymo santrauka. Įvado apimtis 2–4 puslapiai.
   \label{tab:priziurimasPavyzdys}
 \end{table}
 
-\ref{tab:priziurimasPavyzdys} lentelėje pateikiamas pavyzdys su amerikiečių gestų kalbos abėcėle. Lentelėje pateikiamos piršų padėtys, o pirštai numeruojami pagal \ref{appendix:pirstai} pateikiamą pirštų numeraciją. Kiekvieno piršto padėtis šiame pavyzdyje gali būti: \textit{atlenktas, sulenktas, užlenktas}. Ir kiekvienai padėčiai esant pateikiamas rezultatas, arba kitaip - etiketė, kokią raidę abėcėlėje atitinka pavaizduotos pirštų padėtys.
+\ref{tab:priziurimasPavyzdys} lentelėje pateikiamas pavyzdys su amerikiečių gestų kalbos abėcėle. Lentelėje pateikiamos piršų padėtys, o pirštai numeruojami pagal \ref{appendix:pirstai} priede pateikiamą pirštų numeraciją. Kiekvieno piršto padėtis šiame pavyzdyje gali būti: \textit{atlenktas, sulenktas, užlenktas}. Ir kiekvienai padėčiai esant pateikiamas rezultatas, arba kitaip - etiketė, kokią raidę abėcėlėje atitinka pavaizduotos pirštų padėtys.
 
 
 \begin{table}[H]\footnotesize
@@ -228,13 +230,111 @@ Vien iš šio medžio galimybių medžio galima matyti, kad pilnai užtenka spre
 
 
 \section{Neuroniniai tinklai}
+Žmogaus smegenys yra labai sudėtingas, nelijinis ir paralelinis kompiuteris \cite{Hay09}. Kiekvieno kūnas yra sudarytos iš milijardų nervinių ląstelių vadinamų neuronais. Jie sukuria ir/arba perduoda elektrocheminius impulsus. Neuronai tarpusavyje yra sujungti dendritais, ant kurių yra sinapsės. 
+
+Kiekvienas sužadintas neuronas dėl pasikeitusios temperatūros, spaudimo, skausmo ar kitų veiksnių, perduoda informaciją į smegenis dėl sprendimo, ką daryti, priėmimo. Tai, kaip ir buvo paminėta, yra siųsti signalą iš vieno neurono į kitą, kol galiausiai signalas pasiekia smegenis. Svarbu ir tai, kad kiekvienas neuronas yra nepriklausomas nuo kito. Tai tik grandis, kuri yra atsakinga už signalo priėmimą ir perdavimą. Smegenims gavus signalą, jį apdorojus ir priėmus sprendimą, signalas tuo pačiu keliu siunčiamas atgal, kol pirmąjį sužadinimą gavęs neuronas sulaukia atsakymo. 
 
 \subsection{Dirbtiniai neuroniniai tinklai}
+\textbf{Dirbtiniai neuroniniai tinklai} (\textit{angl. artificial neural networks}) – struktūra, sukurta remiantis žmogaus nervinės sistemos darbu. Dirbtiniai neuroniniai tinklai gali būti išmokinti atlikti klasifikavimo, spėjimo, sprendimų priėmimo ir kitas užduotis. 
+
+Dirbtiniai neuroniniai tinklai susideda iš dirbtinių neuronų. Tai trijų sluoksnių tinklas, kuris susideda iš įeigos (\textit{angl. input}), paslėptojo (\textit{angl. hidden}), kuris gali būti sudarytas iš vieno ar daugiau sluoksnių, ir išeigos (\textit{angl. output}) sluoksnių.
+
+
+\begin{figure}[H]
+	\centering
+	\tikzset{%
+		every neuron/.style={
+			circle,
+			draw,
+			minimum size=1cm
+		},
+	}
+	
+	\begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth]
+	\centering
+	
+	\foreach \m/\l [count=\y] in {1,2,3}
+	\node [every neuron/.try, neuron \m/.try] (input-\m) at (0,1.9-\y) {};
+	
+	\foreach \m [count=\y] in {1,2,3,4}
+	\node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y) {};
+	
+	\foreach \m [count=\y] in {1,2}
+	\node [every neuron/.try, neuron \m/.try ] (output-\m) at (4,2.3-\y*1.6) {};
+	
+	\foreach \i in {1,...,3}
+	\foreach \j in {1,...,4}
+	\draw [->] (input-\i) -- (hidden-\j);
+	
+	\foreach \i in {1,...,4}
+	\foreach \j in {1,...,2}
+	\draw [->] (hidden-\i) -- (output-\j);
+	
+	\foreach \l [count=\x from 0] in {Įeigos, Paslėptasis, Išeigos}
+	\node [align=center, above] at (\x*2,2) {\l \\ sluoksnis};
+	\end{tikzpicture}
+	\caption{Dirbtinio neuroninio tinklo pavyzdys} \label{fig:ann}
+\end{figure}
+
+Kiekvienas neuronas dirbtiniuose neuroniniuose tinkluose gali gauti vieną ar kelias įeigas. Visų šių įeigų svorių suma yra apdorojama. Ji apdorojama aktyvacijos funkcija. Yra keletas skirtingų aktyvacijos funkcijų, kaip, pavyzdžiui, tiesinė, \textit{tanh}, \textit{ReLU} ir nelinijinės regresijos funkcijos. Toliau, \ref{eq:relu} formulėje pateikiamas \textit{ReLU} aktyvacijos funkcijos principas.
+
+
+\begin{equation}\label{eq:relu}
+f(x) = \begin{cases}
+	0 & \text{jei } x < 0 \\
+	x & \text{jei } x \ge 0
+\end{cases}
+\end{equation}
+
+\subsection{Daugiasluosknis perceptronas}
+
+\textbf{Daugiasluoksnis perceptronas} (\textit{angl. multilayer perceptron}) - dirbtinių neuroninių tinklų struktūra besivadovaujantis tinklas. Dažniausiai turi tris ar daugiau sluoksnių, kurie dažniausiai kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
+
 
 \subsection{Konvoliuciniai neuroniniai tinklai}
 
+\textbf{Konvoliuciniai neuroniniai tinklai} (\textit{angl. convoliutional neural networks}) - 
+
 \subsection{Rekurentiniai neuroniniai tinklai}
 
+\textbf{Rekurentiniai neuroniniai tinklai} (\textit{angl. recurrent neural networks})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{img/nn-tipai}
+	\caption{ tipai}
+	\label{img:tipai}
+\end{figure}
+
+\ref{img:tipai} paveikslėlyje pavaizduoti keturi skirtingi būdai, kuriais naudojantis neuroniniai tinklai veikia. Rausvos spalvos kvadratėlis reiškia įeigą (\textit{angl. input}), žalsvas - paslėptuosius sluoksnius (\textit{angl. hidden layers}), o melsvas - išeigą (\textit{angl. output}). Pateikiami šie būdai:
+
+\begin{itemize}
+	\item \textbf{Vienas su vienu} (\textit{angl. one to one}) – būdas, kuriame yra viena įeiga, paslėptasis sluoksnis ir išeiga. Šis būdas dažniausiai taikomas konstruojant konvoliucinius neuroninius tinklus. Kaip pavyzdį galima pateikti paveikslėlio atpažinimą. Tai galėtų būti statinės gestų kalbos atpažinimas;
+	\item \textbf{Vienas su daug} (\textit{angl. one to many}) – būdas, kuriame yra viena įeiga, bet kelios išeigos. Vienas iš panaudojimo būdų galėtų būti sakinio suformavimas iš paveikslėlio. Toks tinklas ne tik atpažįsta pagrindinį objektą kadre, bet ir apibūdina esančią aplinką, daro kitus sprendimus;
+	\item \textbf{Daug su vienu} (\textit{angl. many to one}) – būdas, kuriame yra daug įeigų, bet tik viena išeiga. Tokio būdo pavyzdys galėtų būti vieno žodžio, tarkime, „labas“ atpažinimas iš video sraudo.
+	\item \textbf{Daug su daug} (\textit{angl. many to many}) – būdas, kuriame yra daug įeigų ir daug išeigų. Šis būdas gali būti skaidomas į dvi dalis:
+	\begin{itemize}
+		\item \textbf{Priklausomas} - įeigų skaičius sutampa su išeigų skaičiumi. Kiekviena įeiga turi savo išeigos atitikmenį. Tai būtų dalinai galima gretitinti su \textit{vienas su vienu} būdu. Pavyzdys šios atšakos galėtų būti video srauto klasifikacija pagal kiekvieną kadrą - nuolatinis atnaujinimas, to kas galėjo būti pasakyta, pavyzdžiui, gestų kalboje.
+		\item \textbf{Nepriklausomas} - įeigos skaičius galimai nesutampa su išeigų skaičiumi. Kiekviena įeiga yra nepriklausoma ir išeigos dėliojamos pagal tam tikrus aspektus. Tokio būdo pavyzdys galėtų būti neuroniniai tinklai, kurie atlieka vertėjo funkcijas, pavyzdžiui, iš anglų į lietuvių kalbas, nes skiriasi tiek gramatika, tiek sakinių stilistika.
+	\end{itemize}
+\end{itemize}
+
+
+\begin{equation}\label{eq:sobelg}
+h_t = f_w(h_{t-1}, x_t)
+\end{equation}
+
+ht - hidden state
+fw - funkcija su parametrais w (svoriais)
+ht-1 - old state
+xt - input vector at some time step
+
+\cite{DBLP:journals/corr/Lipton15}
+LSTM - long-short term memory
+https://arxiv.org/pdf/1506.00019.pdf
+https://medium.com/@erikhallstrm/using-the-dynamicrnn-api-in-tensorflow-7237aba7f7ea
+
+\subsection{Apjungiamieji tinklų modeliai}
 
 \section{Eksperimentinė dalis}
 
@@ -254,18 +354,10 @@ išraiškos priemonių.
 
 Skyriai gali turėti poskyrius ir smulkesnes sudėtines dalis, kaip punktus ir
 papunkčius.
-
-\subsection{Poskyris}
 %Citavimo pavyzdžiai: cituojamas vienas šaltinis \cite{PvzStraipsnLt}; cituojami
 %keli šaltiniai \cite{PvzStraipsnEn, PvzKonfLt, PvzKonfEn, PvzKnygLt, PvzKnygEn,
 %PvzElPubLt, PvzElPubEn, PvzMagistrLt, PvzPhdEn}.
 
-\subsubsection{Skirsnis}
-\subsubsubsection{Straipsnis}
-\subsubsection{Skirsnis}
-\section{Skyrius}
-\subsection{Poskyris}
-\subsection{Poskyris}
 
 \sectionnonum{Rezultatai ir išvados}
 Rezultatų ir išvadų dalyje išdėstomi pagrindiniai darbo rezultatai (kažkas
@@ -306,19 +398,19 @@ santrumpos.
 \end{figure}
 
 
-\section{Eksperimentinio palyginimo rezultatai}
-% tablesgenerator.com - converts calculators (e.g. excel) tables to LaTeX
-\begin{table}[H]\footnotesize
-  \centering
-  \caption{Lentelės pavyzdys}
-  {\begin{tabular}{|l|c|c|} \hline
-    Algoritmas & $\bar{x}$ & $\sigma^{2}$ \\
-    \hline
-    Algoritmas A  & 1.6335    & 0.5584       \\
-    Algoritmas B  & 1.7395    & 0.5647       \\
-    \hline
-  \end{tabular}}
-  \label{tab:table example}
-\end{table}
+%\section{Eksperimentinio palyginimo rezultatai}
+%% tablesgenerator.com - converts calculators (e.g. excel) tables to LaTeX
+%\begin{table}[H]\footnotesize
+%  \centering
+%  \caption{Lentelės pavyzdys}
+%  {\begin{tabular}{|l|c|c|} \hline
+%    Algoritmas & $\bar{x}$ & $\sigma^{2}$ \\
+%    \hline
+%    Algoritmas A  & 1.6335    & 0.5584       \\
+%    Algoritmas B  & 1.7395    & 0.5647       \\
+%    \hline
+%  \end{tabular}}
+%  \label{tab:table example}
+%\end{table}
 
 \end{document}

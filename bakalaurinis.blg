@@ -1,16 +1,16 @@
-[0] Config.pm:354> INFO - This is Biber 2.7
-[0] Config.pm:357> INFO - Logfile is 'bakalaurinis.blg'
-[44] biber-darwin:303> INFO - === Sat May  5, 2018, 13:52:31
-[67] Biber.pm:359> INFO - Reading 'bakalaurinis.bcf'
-[165] Biber.pm:835> INFO - Found 1 citekeys in bib section 0
-[179] Biber.pm:3670> INFO - Processing section 0
-[194] Biber.pm:3840> INFO - Looking for bibtex format file 'bibliografija.bib' for section 0
-[197] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
-[202] bibtex.pm:1292> INFO - Found BibTeX data source 'bibliografija.bib'
-[205] Utils.pm:164> WARN - BibTeX subsystem: /var/folders/0n/4hjjy3mn0_l3tqn1lqk231v00000gn/T/ljYDCg9jnR/bibliografija.bib_7651.utf8, line 4, warning: 148 characters of junk seen at toplevel
-[215] UCollate.pm:68> INFO - Overriding locale 'lt-LT' defaults 'variable = shifted' with 'variable = non-ignorable'
-[215] UCollate.pm:68> INFO - Overriding locale 'lt-LT' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[215] Biber.pm:3499> INFO - Sorting list 'anyt/global/' of type 'entry' with scheme 'anyt' and locale 'lt-LT'
-[217] bbl.pm:608> INFO - Writing 'bakalaurinis.bbl' with encoding 'UTF-8'
-[218] bbl.pm:712> INFO - Output to bakalaurinis.bbl
-[219] Biber.pm:109> INFO - WARNINGS: 1
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'bakalaurinis.blg'
+[34] biber:287> INFO - === Sk Geg 13, 2018, 11:08:28
+[119] Biber.pm:348> INFO - Reading 'bakalaurinis.bcf'
+[251] Biber.pm:742> INFO - Found 3 citekeys in bib section 0
+[256] Biber.pm:3151> INFO - Processing section 0
+[283] Biber.pm:3308> INFO - Looking for bibtex format file 'bibliografija.bib' for section 0
+[298] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[311] bibtex.pm:974> INFO - Found BibTeX data source 'bibliografija.bib'
+[334] Utils.pm:147> WARN - BibTeX subsystem: /tmp/sCYfvbxcVE/bibliografija.bib_28215.utf8, line 4, warning: 148 characters of junk seen at toplevel
+[364] UCollate.pm:65> INFO - Overriding locale 'lt-LT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[364] UCollate.pm:65> INFO - Overriding locale 'lt-LT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[364] Biber.pm:3028> INFO - Sorting list 'anyt/global' of type 'entry' with scheme 'anyt' and locale 'lt-LT'
+[367] bbl.pm:519> INFO - Writing 'bakalaurinis.bbl' with encoding 'UTF-8'
+[376] bbl.pm:615> INFO - Output to bakalaurinis.bbl
+[376] Biber.pm:109> INFO - WARNINGS: 1

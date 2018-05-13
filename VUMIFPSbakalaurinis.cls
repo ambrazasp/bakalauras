@@ -256,7 +256,7 @@
          \secdef\@Appendix\@sAppendix%
     }%
     \setcounter{section}{0}%
-    \renewcommand{\thesection}{\arabic{section} priede}%
+    \renewcommand{\thesection}{\arabic{section}}%
     % Insert record to TOC 
     \addcontentsline{toc}{section}{\MakeUppercase{Priedai}}%}
 }
