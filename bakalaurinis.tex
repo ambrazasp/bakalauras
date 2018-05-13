@@ -15,9 +15,17 @@
 \usepackage{makecell}
 \usepackage{forest}
 
+\usepackage{enumitem}
+\setlist[1]{itemsep=-2pt}
 
 \renewcommand\theadfont{\bfseries}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
+
+
+\definecolor{myyellow}{RGB}{154, 125, 10}
+\definecolor{myred}{RGB}{199, 0, 57}
+\definecolor{myblue}{RGB}{52, 152, 219}
+\definecolor{mygreen}{RGB}{30, 132, 73}
 
 
 % Titulinio aprašas
@@ -288,16 +296,225 @@ f(x) = \begin{cases}
 
 \subsection{Daugiasluosknis perceptronas}
 
-\textbf{Daugiasluoksnis perceptronas} (\textit{angl. multilayer perceptron}) - dirbtinių neuroninių tinklų struktūra besivadovaujantis tinklas. Dažniausiai turi tris ar daugiau sluoksnių, kurie dažniausiai kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
+\textbf{Daugiasluoksnis perceptronas} (\textit{angl. multilayer perceptron}) – dirbtinių neuroninių tinklų struktūra besivadovaujantis tinklas. Dažniausiai turi tris ar daugiau sluoksnių, kurie dažniausiai kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
 
 
 \subsection{Konvoliuciniai neuroniniai tinklai}
 
-\textbf{Konvoliuciniai neuroniniai tinklai} (\textit{angl. convoliutional neural networks}) - 
+\textbf{Konvoliuciniai neuroniniai tinklai} (\textit{angl. convoliutional neural networks}) – specialios rūšies vienpusiai (\textit{angl. feed-forward}) neuroniniai tinklai, kurie remiasi daugiasluoksnio perceptrono principu. Šie tinklai, kurie remiasi \textit{ReLU} principu yra kelis kartus greitesni, nei tie, kurie remiasi kitais principais, pavyzdžiui, \textit{tanh} \cite{NIPS2012_4824}. Toliau aptariami keli pagrindiniai konvoliucinių neuroninių tinklų sluoksniai.
+
+\subsubsection{Konvoliucinis sluoksnis}
+
+\textbf{Konvoliucinis sluoksnis} (\textit{angl. convoliution layer}) – sluoksnis, skirtas išskirti savybes. Šio sluoksnio 
+pritaikymą galima skaidyti į tokias operacijas:
+
+
+\begin{enumerate}
+	\item \textbf{Įeiga}, susidedanti iš $ W_1 \times H_1 \times D_1 $, kur $ W_1 $ - plotis, $ H_1 $ - aukštis ir $ D_1 $ - gylis;
+	\item \textbf{Parametrai}, kurie susideda iš $ F $, $ K $, $ P $ ir $ S $, kur:
+	\begin{itemize}
+		\item $ F $ - filtro dydis (dažniausiai taikomas $ 3 \times 3 $ filtras);
+		\item $ K $ - filtrų skaičius (dažniausiai naudojamas  $ 2^n $, kur $ n $ - natūralusis skaičius);
+		\item $ P $ - papildomas rėmelis matricai, sudarytas iš 0. Dažniausiai naudojama $ M = \frac{F - 1}{2} $, kur $ M $ yra iš kiekvienos matricos pusės pridedamų eilučių ar stulpelių skaičius, sudarytas iš $0$, tam, kad matrica nepakeistų savo dydžio po šio sluoksnio pritaikymo; 
+		\item $ S $ - žingsnis, per kiek paslenkamas filtras (dažniausiai naudojamas $ 1 $);
+	\end{itemize}
+	\item \textbf{Išeiga}, susidedanti iš $ W_2 \times H_2 \times D_2 $, kur $ W_2 = \frac{W_1 - F + 2P}{S} + 1 $ - plotis, $ H_2 = \frac{H_1 - F + 2P}{S} + 1 $ - aukštis ir $ D_2 = K $ - gylis
+\end{enumerate}
+
+\begin{table}[H]\footnotesize
+	\centering
+	\caption{Pavyzdinės konvoliucinio sluoksnio užduoties ypatybės}
+	{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c |} 
+		\hline
+		\multicolumn{3}{| c |}{\thead{Įeiga}} &
+		\multicolumn{4}{ c |}{\thead{Parametrai}} & \multicolumn{3}{ c |}{\thead{Išeiga}} \\
+		\hline
+		$W_1$ & $H_1$ & $D_1$ & $F$ & $K$ & $P$ & $S$ & $W_2$ & $H_2$ & $D_2$  \\
+		\hline
+		3 & 3 & 1 & 3 $\times$ 3 & 1 & 1 & 1 & 3 & 3 & 1 \\
+		\hline
+	\end{tabular}}
+	\label{tab:convT}
+\end{table}
+	
+Toliau, \ref{eq:convl} formulėje pateikiamas pavyzdys, kuriame naudojamos \ref{tab:convT} lentelėje pateiktos pavyzdinės konvoliucinio sluoksnio užduoties ypatybės. Spalvos šioje formulėje žymi skirtingų matricų elementus, kur geltona - įeigos matricos elementų spalva, raudona - papildomo rėmelio $P$ spalva, mėlyna - filtro matricos spalva, o žalia - išeigos matricos elemento spalva. \ref{eq:convl1} ir \ref{eq:convl2} formulėse pateikiami konkretūs pavyzdžiai, kuriais remiantis buvo gautos \ref{eq:convl} formulės reikšmės.
+
+\begin{equation}\label{eq:convl}
+\begin{bmatrix}
+\textcolor{myyellow}{1} & \textcolor{myyellow}{8} & \textcolor{myyellow}{6} \\
+\textcolor{myyellow}{9} & \textcolor{myyellow}{2} & \textcolor{myyellow}{4} \\
+\textcolor{myyellow}{3} & \textcolor{myyellow}{7} & \textcolor{myyellow}{5}
+\end{bmatrix}
+*
+\begin{bmatrix}
+\textcolor{myblue}{1} & \textcolor{myblue}{0} & \textcolor{myblue}{1} \\
+\textcolor{myblue}{0} & \textcolor{myblue}{1} & \textcolor{myblue}{0} \\
+\textcolor{myblue}{1} & \textcolor{myblue}{0} & \textcolor{myblue}{1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\textcolor{mygreen}{3} & \textcolor{mygreen}{21} & 8 \\
+24 & 17 & 19 \\
+5 & 20 & 7
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}\label{eq:convl1}
+\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myyellow}{1}*\textcolor{myblue}{1}+\textcolor{myyellow}{8}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myyellow}{9}*\textcolor{myblue}{0}+\textcolor{myyellow}{2}*\textcolor{myblue}{1}=\textcolor{mygreen}{3}
+\end{equation}
+
+
+\begin{equation}\label{eq:convl2}
+\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myyellow}{1}*\textcolor{myblue}{0}+\textcolor{myyellow}{8}*\textcolor{myblue}{1}+\textcolor{myyellow}{6}*\textcolor{myblue}{0}+\textcolor{myyellow}{9}*\textcolor{myblue}{1}+\textcolor{myyellow}{2}*\textcolor{myblue}{0}+\textcolor{myyellow}{4}*\textcolor{myblue}{1}=\textcolor{mygreen}{21}
+\end{equation}
+
+\subsubsection{Telkimo sluoksnis}
+
+\textbf{Telkimo sluoksnis} (\textit{angl. pooling layer}) – sluoksnis, skirtas sumažinti matricą, paliekant tik svarbiausias jos dalis. Dažniausiai naudojamos vidutinės (\textit{angl. average pooling}) arba didžiausios (\textit{angl. max pooling}) reikšmės operacijos. 
+
+Telkimo sluoksnio operacijas galima skaidyti į tokias dalis:
+
+\begin{enumerate}
+	\item \textbf{Įeiga}, susidedanti iš $ W_1 \times H_1 \times D_1 $, kur $ W_1 $ - plotis, $ H_1 $ - aukštis ir $ D_1 $ - gylis
+	\item \textbf{Parametrai}, kurie susideda iš $ F $ ir $ S $, kur $ F $ - filtro dydis (dažniausiai taikomas $ 2 \times 2 $ filtras) ir $ S $ - žingsnis, per kiek paslenkamas filtras (dažniausiai naudojamas $ 2 $)
+	\item \textbf{Išeiga}, susidedanti iš $ W_2 \times H_2 \times D_2 $, kur $ W_2 = \frac{W_1 - F}{S} + 1 $ - plotis, $ H_2 = \frac{H_1 - F}{S} + 1 $ - aukštis ir $ D_2 = D_1 $ - gylis
+\end{enumerate}
+
+
+\begin{table}[H]\footnotesize
+	\centering
+	\caption{Pavyzdinės telkimo sluoksnio užduoties ypatybės}
+	{\begin{tabular}{| c | c | c | c | c | c | c | c |} 
+		\hline
+		\multicolumn{3}{| c |}{\thead{Įeiga}} &
+		\multicolumn{2}{ c |}{\thead{Parametrai}} & \multicolumn{3}{ c |}{\thead{Išeiga}} \\
+		\hline
+		$W_1$ & $H_1$ & $D_1$ & $F$ & $S$ & $W_2$ & $H_2$ & $D_2$  \\
+		\hline
+		4 & 4 & 1 & 2 $\times$ 2 & 2 & 3 & 3 & 1 \\
+		\hline
+	\end{tabular}}
+	\label{tab:pollT}
+\end{table}	
+Toliau, \ref{eq:poll} formulėje pateikiamas pavyzdys, kuriame naudojamos \ref{tab:pollT} lentelėje pateiktos pavyzdinės telkimo sluoksnio užduoties ypatybės. Spalvos šioje formulėje žymi filtro su žingsniu pritaikytas operacijas gauti išeigai. \ref{eq:poll1} ir \ref{eq:poll2} formulėse pateikiami konkretūs pavyzdžiai, kuriais remiantis buvo gautos \ref{eq:poll} formulės reikšmės.
+
+\begin{equation}\label{eq:poll}\def\y{\color{myyellow}}\def\b{\color{myblue}}\def\r{\color{myred}}\def\g{\color{mygreen}}
+\begin{bmatrix}
+\y{1} & \y{3} & \b{1} & \b{3} \\
+\y{2} & \y{5} & \b{4} & \b{2} \\
+\g{4} & \g{3} & \r{2} & \r{5} \\
+\g{2} & \g{5} & \r{4} & \r{2} \\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\y{5} & \b{4} \\
+\g{5} & \r{5} 
+\end{bmatrix}
+\end{equation}
+\begin{equation}\label{eq:poll1}
+max(
+\begin{bmatrix}
+\textcolor{myyellow}{1} & \textcolor{myyellow}{3} \\
+\textcolor{myyellow}{2} & \textcolor{myyellow}{5}
+\end{bmatrix}
+) = \textcolor{myyellow}{5}
+%1, 3, 1, 3, 2, 5, 2, 4, 3
+\end{equation}
+\begin{equation}\label{eq:poll2}
+max(
+\begin{bmatrix}
+\textcolor{myblue}{1} & \textcolor{myblue}{3} \\
+\textcolor{myblue}{4} & \textcolor{myblue}{2} 
+\end{bmatrix}
+) = \textcolor{myblue}{4}
+\end{equation}
+
+\subsubsection{Atsisakymo sluoksnis}
+\textbf{Atsisakymo sluoksnis} (\textit{angl. dropout layer}) – konvoliucinių tinklų sluoksnis, skirtas normalizuoti ir sureguliuoti tarpusavyje susijusių neuronų sąryšius, skirtus perduoti signalus. Mokymo fazėje dažniausiai ištrinamos neuronuose esančios reikšmės tam, kad šis per naują apsimokytų. Galimai netgi atsisakoma tam tikrų neuronų darbo.
+
+\begin{figure}[H]
+	\centering
+	
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\tikzset{%
+			every neuron/.style={
+				circle,
+				draw,
+				minimum size=0.5cm
+			},
+		}
+		
+		\begin{tikzpicture}[x=1cm, y=1cm, >=stealth]
+		\centering
+		
+		\foreach \m/\l [count=\y] in {1,2,3}
+		\node [every neuron/.try, neuron \m/.try] (input-\m) at (0,1.9-\y) {};
+		
+		\foreach \m [count=\y] in {1,2,3,4}
+		\node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y) {};
+		
+		\foreach \m [count=\y] in {1,2}
+		\node [every neuron/.try, neuron \m/.try ] (output-\m) at (4,2.3-\y*1.6) {};
+		
+		\foreach \i in {1,...,3}
+		\foreach \j in {1,...,4}
+		\draw [->] (input-\i) -- (hidden-\j);
+		
+		\foreach \i in {1,...,4}
+		\foreach \j in {1,...,2}
+		\draw [->] (hidden-\i) -- (output-\j);
+		
+		\end{tikzpicture}
+		\caption{Standartinis neuroninis tinklas} \label{fig:snn}
+	\end{minipage}
+	\begin{minipage}{.4\textwidth}
+		\centering
+		\tikzset{%
+			every neuron/.style={
+				circle,
+				draw,
+				minimum size=0.5cm
+			},
+			cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+			%default radius will be 1pt. 
+			cross/.default={0.19cm},
+		}
+		
+		\begin{tikzpicture}[x=1cm, y=1cm, >=stealth]
+		\centering
+		
+		\foreach \m/\l [count=\y] in {1,2,3}
+		\node [every neuron/.try, neuron \m/.try] (input-\m) at (0,1.9-\y) {};
+		
+		\foreach \m [count=\y] in {1,2,3,4}
+		\node [every neuron/.try, neuron \m/.try ] (hidden-\m) at (2,2.5-\y) {};
+		
+		\foreach \m [count=\y] in {1,2}
+		\node [every neuron/.try, neuron \m/.try ] (output-\m) at (4,2.3-\y*1.6) {};
+		
+		\foreach \i in {1,3}
+		\foreach \j in {1,3}
+		\draw [->] (input-\i) -- (hidden-\j);
+		
+		\foreach \i in {1,3}
+		\foreach \j in {1,...,2}
+		\draw [->] (hidden-\i) -- (output-\j);
+		
+		\draw (0,-0.1) node[cross] {};
+		
+		\draw (2,0.5) node[cross] {};
+		
+		\draw (2,-1.5) node[cross] {};
+		\end{tikzpicture}
+		\caption{Tinklas po atsisakymo sluoksnio} \label{fig:sdnn}
+	\end{minipage}
+\end{figure}
+
 
 \subsection{Rekurentiniai neuroniniai tinklai}
 
-\textbf{Rekurentiniai neuroniniai tinklai} (\textit{angl. recurrent neural networks})
+\textbf{Rekurentiniai neuroniniai tinklai} (\textit{angl. recurrent neural networks}) – 
 
 \begin{figure}[H]
 	\centering
