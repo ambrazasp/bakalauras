@@ -26,32 +26,58 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.}Neuroniniai tinklai}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.}Dirbtiniai neuroniniai tinklai}{10}
+\contentsline {subsection}{\numberline {2.1.}Perceptronas}{10}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.}Daugiasluosknis perceptronas}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.}Konvoliuciniai neuroniniai tinklai}{11}
+\contentsline {subsection}{\numberline {2.3.}Dirbtiniai neuroniniai tinklai}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.1.}Konvoliucinis sluoksnis}{11}
+\contentsline {subsection}{\numberline {2.4.}Konvoliuciniai neuroniniai tinklai}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.2.}Telkimo sluoksnis}{12}
+\contentsline {subsubsection}{\numberline {2.4.1.}Konvoliucinis sluoksnis}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.3.3.}Atsisakymo sluoksnis}{13}
+\contentsline {subsubsection}{\numberline {2.4.2.}Telkimo sluoksnis}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.}Rekurentiniai neuroniniai tinklai}{13}
+\contentsline {subsubsection}{\numberline {2.4.3.}Atsisakymo sluoksnis}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.}Apjungiamieji tinklų modeliai}{14}
+\contentsline {subsection}{\numberline {2.5.}Rekurentiniai neuroniniai tinklai}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{15}
+\contentsline {subsubsection}{\numberline {2.5.1.}Rekurentinių neuroninių tinklų tipai}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{16}
+\contentsline {subsubsection}{\numberline {2.5.2.}Rekurentinių neuroninių tinklų architektūros}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Rezultatai ir išvados}{17}
+\contentsline {paragraph}{\numberline {2.5.2.1.}LSTM}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatūra}{18}
+\contentsline {paragraph}{\numberline {2.5.2.2.}BRNN}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{19}
+\contentsline {subsection}{\numberline {2.6.}Apjungiamieji tinklų modeliai}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{19}
+\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{20}
+\contentsline {subsection}{\numberline {3.1.}Panašūs darbai}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.}Argentiniečių gestų kalbos atpažinimas}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.}Lietuvių gestų kalbos atpažinimas}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.3.1.}Duomenų paruošimas}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.3.2.}Modelio apmokymas}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.3.3.}Modelio testavimas}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Rezultatai ir išvados}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatūra}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Sąvokų apibrėžimai}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Santrumpos}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\MakeUppercase {Priedai}}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{24}

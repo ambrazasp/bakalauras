@@ -60,11 +60,11 @@ išvados. Santraukos apimtis ne didesnė nei 0,5 puslapio. Santraukų gale
 nurodomi darbo raktiniai žodžiai. 
 % Nurodomi iki 5 svarbiausių temos raktinių žodžių (terminų).
 % Vienas terminas gali susidėti iš kelių žodžių.
-\raktiniaizodziai{raktinis žodis 1, raktinis žodis 2, raktinis žodis 3, raktinis žodis 4, raktinis žodis 5}   
+\raktiniaizodziai{neuroniniai tinklai, konvoliuciniai neuroniniai tinklai, rekurentiniai neuroniniai tinklai, apsimokančios sistemos, gestų kalba, lietuvių gestų kalba}   
 
 \sectionnonumnocontent{Summary}
 Santrauka anglų kalba. Santraukos apimtis ne didesnė nei 0,5 puslapio.
-\keywords{keyword 1, keyword 2, keyword 3, keyword 4, keyword 5}
+\keywords{neural networks, convolutional neural networks, recurrent neural networks, machine learning, sign language, lithuanian sign language}
 
 \tableofcontents
 
@@ -242,11 +242,92 @@ Vien iš šio medžio galimybių medžio galima matyti, kad pilnai užtenka spre
 
 Kiekvienas sužadintas neuronas dėl pasikeitusios temperatūros, spaudimo, skausmo ar kitų veiksnių, perduoda informaciją į smegenis dėl sprendimo, ką daryti, priėmimo. Tai, kaip ir buvo paminėta, yra siųsti signalą iš vieno neurono į kitą, kol galiausiai signalas pasiekia smegenis. Svarbu ir tai, kad kiekvienas neuronas yra nepriklausomas nuo kito. Tai tik grandis, kuri yra atsakinga už signalo priėmimą ir perdavimą. Smegenims gavus signalą, jį apdorojus ir priėmus sprendimą, signalas tuo pačiu keliu siunčiamas atgal, kol pirmąjį sužadinimą gavęs neuronas sulaukia atsakymo. 
 
-\subsection{Dirbtiniai neuroniniai tinklai}
-\textbf{Dirbtiniai neuroniniai tinklai} (\textit{angl. artificial neural networks}) – struktūra, sukurta remiantis žmogaus nervinės sistemos darbu. Dirbtiniai neuroniniai tinklai gali būti išmokinti atlikti klasifikavimo, spėjimo, sprendimų priėmimo ir kitas užduotis. 
+\subsection{Perceptronas}
 
-Dirbtiniai neuroniniai tinklai susideda iš dirbtinių neuronų. Tai trijų sluoksnių tinklas, kuris susideda iš įeigos (\textit{angl. input}), paslėptojo (\textit{angl. hidden}), kuris gali būti sudarytas iš vieno ar daugiau sluoksnių, ir išeigos (\textit{angl. output}) sluoksnių.
+Parceptronas (\textit{angl. perceptron}) – kompiuterinis modelis, skirtas atkartoti žmogaus smegenų darbą. Toliau pateikiamas perceptrono pavyzdys.
 
+\begin{figure}[H]
+	\centering
+	\tikzset{%
+		every neuron/.style={
+			circle,
+			draw,
+			minimum size=1cm
+		},
+	}
+	
+	\begin{tikzpicture}[x=1.5cm, y=1.5cm, >=stealth]
+	\centering
+	
+	\foreach \m/\l [count=\y] in {1,2,3,4}
+	\node [every neuron/.try, neuron \m/.try] (input-\m) at (0,2.5-\y) {};
+	
+	\foreach \m [count=\y] in {1,2,3,4}
+	\node [every neuron/.try, neuron \m/.try ] (weight-\m) at (2,2.5-\y) {};
+	
+	\foreach \m [count=\y] in {1}
+	\node [every neuron/.try, neuron \m/.try ] (sum-\m) at (4,1.6-\y*1.6) {};
+	
+	\foreach \m [count=\y] in {1}
+	\node [every neuron/.try, neuron \m/.try ] (funk-\m) at (6,1.6-\y*1.6) {};
+	
+	\foreach \m [count=\y] in {1}
+	\node [every neuron/.try, neuron \m/.try ] (output-\m) at (8,1.6-\y*1.6) {};
+	
+	\foreach \i in {1,...,4}
+	\draw [->] (input-\i) -- (weight-\i);
+	
+	\foreach \i in {1,...,4}
+	\draw [->] (weight-\i) -- (sum-1);
+	
+	\draw [->] (sum-1) -- (funk-1);
+	
+	\draw [->] (funk-1) -- (output-1);
+	
+	\foreach \l [count=\x from 0] in {Įeigos\\, Svoriai\\, Suma\\, Aktyvacijos\\funkcija, Išeiga\\}
+	\node [align=center, above] at (\x*2,2) {\l};
+	
+	
+	\draw (0,1.49) node {$x_1$};
+	\draw (0,0.49) node {$x_2$};
+	\draw (0,0.045) node {$\vdots$};
+	\draw (0,-0.51) node {$x_n$};
+	\draw (0,-1.51) node {$1$};
+	
+	\draw (2,1.49) node {$w_1$};
+	\draw (2,0.49) node {$w_2$};
+	\draw (2,0.045) node {$\vdots$};
+	\draw (2,-0.51) node {$w_n$};
+	\draw (2,-1.51) node {$b$};
+	
+	\draw (4,0) node {$\sum$};
+	
+	\draw (6,0) node {$g(x)$};
+	
+	\draw (8,0) node {$x'$};
+	\end{tikzpicture}
+	\caption{Perceptrono pavyzdys} \label{fig:perceptron}
+\end{figure}
+
+\ref{fig:perceptron} paveikslėlyje pavaizduotame pavyzdyje esančią išeigą galima aprašyti formule:
+\begin{equation}
+	x' = g((\sum_{i=0}^{n}x_i*w_i) + b)
+\end{equation}
+
+Kiekvienas perceptronas gali gauti vieną ar kelias įeigas. Visų šių įeigų svorių suma yra sudedama ir paskui apdorojama aktyvacijos funkcija. Yra keletas skirtingų aktyvacijos funkcijų, tokių kaip:
+\begin{itemize}
+	\item $g(x) = ax$ – tiesinė;
+	\item $g(x) = \frac{1}{1+e^{-x}}$ – logistinės regresijos;
+	\item $g(x) = \tanh(x) = \frac{2}{1+e^{-2x}} - 1$ – tangentinė;
+	\item $g(x) = \begin{cases}
+	0 & \text{, kai } x < 0 \\
+	x & \text{, kai } x \ge 0
+	\end{cases} $ – ReLU.
+\end{itemize}
+
+\subsection{Daugiasluosknis perceptronas}
+
+\textbf{Daugiasluoksnis perceptronas} (\textit{angl. multilayer perceptron}) – strukūra, sudaryta iš kelių sluoksnių perceptronų. 
 
 \begin{figure}[H]
 	\centering
@@ -284,19 +365,18 @@ Dirbtiniai neuroniniai tinklai susideda iš dirbtinių neuronų. Tai trijų sluo
 	\caption{Dirbtinio neuroninio tinklo pavyzdys} \label{fig:ann}
 \end{figure}
 
-Kiekvienas neuronas dirbtiniuose neuroniniuose tinkluose gali gauti vieną ar kelias įeigas. Visų šių įeigų svorių suma yra apdorojama. Ji apdorojama aktyvacijos funkcija. Yra keletas skirtingų aktyvacijos funkcijų, kaip, pavyzdžiui, tiesinė, \textit{tanh}, \textit{ReLU} ir nelinijinės regresijos funkcijos. Toliau, \ref{eq:relu} formulėje pateikiamas \textit{ReLU} aktyvacijos funkcijos principas.
+
+Dažniausiai daugiasluoksnis perceptronas turi tris ar daugiau sluoksnių, kurie kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
+
+\subsection{Dirbtiniai neuroniniai tinklai}
+\textbf{Dirbtiniai neuroniniai tinklai} (\textit{angl. artificial neural networks}) – struktūra, sukurta remiantis žmogaus nervinės sistemos darbu. Dirbtiniai neuroniniai tinklai gali būti išmokinti atlikti klasifikavimo, spėjimo, sprendimų priėmimo ir kitas užduotis.
 
 
-\begin{equation}\label{eq:relu}
-f(x) = \begin{cases}
-	0 & \text{jei } x < 0 \\
-	x & \text{jei } x \ge 0
-\end{cases}
-\end{equation}
+Dirbtiniai neuroniniai tinklai remiasi daugiasluoksnio perceptrono principu ir susideda iš šių sluoksnių - įeigos, paslėptojo, kuris gali būti sudarytas iš kelių sluoksnių, ir išeigos.
 
-\subsection{Daugiasluosknis perceptronas}
 
-\textbf{Daugiasluoksnis perceptronas} (\textit{angl. multilayer perceptron}) – dirbtinių neuroninių tinklų struktūra besivadovaujantis tinklas. Dažniausiai turi tris ar daugiau sluoksnių, kurie dažniausiai kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
+
+
 
 
 \subsection{Konvoliuciniai neuroniniai tinklai}
@@ -514,16 +594,35 @@ max(
 
 \subsection{Rekurentiniai neuroniniai tinklai}
 
-\textbf{Rekurentiniai neuroniniai tinklai} (\textit{angl. recurrent neural networks}) – 
+\textbf{Rekurentiniai neuroniniai tinklai} (\textit{angl. recurrent neural networks}) – vienpusiai neuroniniai tinklai, kurie remiasi daugiasluoksnio perceptrono principu. Šie tinklai, apima kitų laiko vienetų apdorotą informaciją ir bendrą kitimą laike \cite{DBLP:journals/corr/Lipton15}.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{img/rnn}
+	\caption{Rekurentinių neuroninių tinklų veikimo principas}
+	\label{img:rnn}
+\end{figure}
+
+\ref{img:rnn} paveiksėlyje yra pavaizduotas bendrinis rekurentinių neuroninių tinklų veikimo principas, kurį galima užrašyti formule:
+
+\begin{equation}\label{eq:rnn}
+h_t = f_w(h_{t-1}, x_t)
+\end{equation}
+
+Kur $h_t$ - paslėpto sluoksnio būsena laiko momentu $t$, kurią dar būtų galima vadinti $t$ žingsnio išeiga, $f_w$ - funkcija $f$ su parametrais $w$, $h_{t-1}$ - praėjusio žingsnio būsena, o $x_t$ - įeigos vektorius. Iš šios formulės galima pastebėti, kad kiekviena būsena gauna praeito žingsnio būsena, kuri yra reikalinga norint stebėti būsenas kintant laike	.
+
+
+\subsubsection{Rekurentinių neuroninių tinklų tipai}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/nn-tipai}
-	\caption{ tipai}
+	\caption{Rekurentinių neuroninių tinklų tipai}
 	\label{img:tipai}
 \end{figure}
 
-\ref{img:tipai} paveikslėlyje pavaizduoti keturi skirtingi būdai, kuriais naudojantis neuroniniai tinklai veikia. Rausvos spalvos kvadratėlis reiškia įeigą (\textit{angl. input}), žalsvas - paslėptuosius sluoksnius (\textit{angl. hidden layers}), o melsvas - išeigą (\textit{angl. output}). Pateikiami šie būdai:
+\ref{img:tipai} paveikslėlyje pavaizduoti keturi skirtingi būdai, kuriais naudojantis rekurentiniai neuroniniai tinklai veikia. Rausvos spalvos kvadratėlis reiškia įeigą (\textit{angl. input}), žalsvas - paslėptuosius sluoksnius (\textit{angl. hidden layers}), o melsvas - išeigą (\textit{angl. output}). Pateikiami šie būdai:
 
 \begin{itemize}
 	\item \textbf{Vienas su vienu} (\textit{angl. one to one}) – būdas, kuriame yra viena įeiga, paslėptasis sluoksnis ir išeiga. Šis būdas dažniausiai taikomas konstruojant konvoliucinius neuroninius tinklus. Kaip pavyzdį galima pateikti paveikslėlio atpažinimą. Tai galėtų būti statinės gestų kalbos atpažinimas;
@@ -536,17 +635,18 @@ max(
 	\end{itemize}
 \end{itemize}
 
+\subsubsection{Rekurentinių neuroninių tinklų architektūros}
 
-\begin{equation}\label{eq:sobelg}
-h_t = f_w(h_{t-1}, x_t)
-\end{equation}
+Viena pagrindinių problemų, su kuria susiduria paprastieji rekurentiniai neuroniniai tinklai yra nykstančių gradientų problema (\textit{angl. vanishing gradient problem}). Tai problema, kurios metu kiekvieno laiko momentu perceptronas apskaičiuoja naujas reiškmes iš praeitame žingsnyje turimų duomenų ir kaip įeiga priima praeito laiko momento išeigą. Dėl šios priežasties ilgainiui dėl per naują skaičiuojamų svorių, perceptronas susiduria su problema, kad „pamiršta“, kas buvo prieš daugiau nei vieną laiko momentą. Tai reiškia, kad rekurentiniai neuroniniai tinklai paprasčiausiai vadovaujasi trumpalaikės atminties principu. Dėl šios priežasties buvo sukurtos keletas skirtingų perceptrono perkurtų modelių, kurie sugebėtų atsiminti ir teisingai įvertinti esamą situaciją. Toliau pateikiami keletos iš tokių neuroninių tinklų architektūrų pavyzdžių.
 
-ht - hidden state
-fw - funkcija su parametrais w (svoriais)
-ht-1 - old state
-xt - input vector at some time step
+\subsubsubsection{LSTM}
 
-\cite{DBLP:journals/corr/Lipton15}
+\textbf{LSTM} – ilga trumpalaikė atmintis (\textit{angl. long short-term memory})
+
+\subsubsubsection{BRNN}
+
+
+
 LSTM - long-short term memory
 https://arxiv.org/pdf/1506.00019.pdf
 https://medium.com/@erikhallstrm/using-the-dynamicrnn-api-in-tensorflow-7237aba7f7ea
@@ -555,6 +655,46 @@ https://medium.com/@erikhallstrm/using-the-dynamicrnn-api-in-tensorflow-7237aba7
 
 \section{Eksperimentinė dalis}
 
+\subsection{Panašūs darbai}
+
+\subsection{Argentiniečių gestų kalbos atpažinimas}
+
+\begin{itemize}
+	\item 3 klasės po 45 video
+	\item Konvoliucija inception v3 
+	\item Final test accuracy - 100\%
+	\item 4000 žingsnių
+	\item Batch accuracy - 99.99\%
+	\item 10 epochs 81.27\%, 0.6431\% loss
+	\item 100 epochs 89.27\%, 0.4422\% loss
+	\item Testavimas: 93.33\%
+\end{itemize}
+
+\begin{itemize}
+	\item 25 klasės po 50 video
+	\item Konvoliucija inception v3 
+	\item Final test accuracy - 91.9\%
+	\item 4000 žingsnių
+	\item Batch accuracy - 88.19\%
+	\item 100 epochs 91.99\%, 0.6839\% loss
+	\item 100 epochs 91.95\%, 0.6255\% loss wider
+	\item 100 epochs 16.55\%, 2.0566\% loss deep
+	\item 10 epochs 97.61\%, 0.2814\% loss getnetwork
+	\item 100 epochs 92.66\%, 0.5539\% loss getnetwork
+\end{itemize}
+
+\subsection{Lietuvių gestų kalbos atpažinimas}
+
+\subsubsection{Duomenų paruošimas}
+\subsubsection{Modelio apmokymas}
+
+\begin{itemize}
+	\item 3 klasės 45 kiekvienai klasei. bendrai 145
+	\item 121 training samples, 14 validation, 100 epochs, 86.93\% accuracy, 0.5081 total loss
+	\item 92.31\% tikslumas iš nematytų 13 video.
+\end{itemize}
+
+\subsubsection{Modelio testavimas}
 
 
 \section{Medžiagos darbo tema dėstymo skyriai}
@@ -593,8 +733,29 @@ atitikti darbo tikslą.
 % necituoti savo kursinio darbo, nes tai nėra oficialus literatūros šaltinis.
 % Jei tokių nuorodų reikia, pateikti jas tekste.
 
-% \sectionnonum{Sąvokų apibrėžimai}
+\sectionnonum{Sąvokų apibrėžimai}
+
+\begin{itemize}
+	\item Dirbtiniai neuroniniai tinklai - artificial neural networks
+	\item Inception v3 - Google modelis
+	\item Išeiga - output
+	\item Įeiga - input
+	\item Konvoliuciniai neuroniniai tinklai - convolutional neural networks
+	\item Neuroniniai tinklai - neural networks
+	\item Paslėptasis sluoksnis - hidden layer
+	\item Rekurentiniai neuroniniai tinklai - recurrent neural networks
+	\item Sluoksnis - layer
+	\item Vienpusiai neuroniniai tinklai - Feed-Forward neural networks
+\end{itemize}
+
 \sectionnonum{Santrumpos}
+\begin{itemize}
+	\item KNN - konvoliuciniai neuroniniai tinklai
+	\item NN - neuroniniai tinklai
+	\item RNN - Rekurentiniai neuroniniai tinklai
+	
+\end{itemize}
+
 Sąvokų apibrėžimai ir santrumpų sąrašas sudaromas tada, kai darbo tekste
 vartojami specialūs paaiškinimo reikalaujantys terminai ir rečiau sutinkamos
 santrumpos.
@@ -614,6 +775,14 @@ santrumpos.
     \label{img:fingers}
 \end{figure}
 
+\section{Konvoliucinio tinklo modelis}
+\label{appendix:inception_v3}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{img/inception_v3}
+	\caption{Konvoliucinio tinklo modelis „Inception v3“}
+	\label{img:inception_v3}
+\end{figure}
 
 %\section{Eksperimentinio palyginimo rezultatai}
 %% tablesgenerator.com - converts calculators (e.g. excel) tables to LaTeX
