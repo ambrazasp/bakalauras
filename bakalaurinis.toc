@@ -30,54 +30,54 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.}Daugiasluosknis perceptronas}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.}Dirbtiniai neuroniniai tinklai}{11}
+\contentsline {subsection}{\numberline {2.3.}Dirbtiniai neuroniniai tinklai}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.}Konvoliuciniai neuroniniai tinklai}{11}
+\contentsline {subsection}{\numberline {2.4.}Konvoliuciniai neuroniniai tinklai}{12}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.4.1.}Konvoliucinis sluoksnis}{12}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.4.2.}Telkimo sluoksnis}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.3.}Atsisakymo sluoksnis}{13}
+\contentsline {subsubsection}{\numberline {2.4.3.}Atsisakymo sluoksnis}{14}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5.}Rekurentiniai neuroniniai tinklai}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.5.1.}Rekurentinių neuroninių tinklų tipai}{14}
+\contentsline {subsubsection}{\numberline {2.5.1.}Rekurentinių neuroninių tinklų tipai}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.5.2.}Rekurentinių neuroninių tinklų architektūros}{15}
+\contentsline {subsubsection}{\numberline {2.5.2.}Rekurentinių neuroninių tinklų modeliai}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {2.5.2.1.}LSTM}{15}
+\contentsline {paragraph}{\numberline {2.5.2.1.}LSTM}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {2.5.2.2.}BRNN}{16}
+\contentsline {subsection}{\numberline {2.6.}Apjungiamieji tinklų modeliai}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.6.}Apjungiamieji tinklų modeliai}{16}
+\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.}Eksperimentinė dalis}{17}
+\contentsline {subsection}{\numberline {3.1.}Panašūs darbai}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.}Panašūs darbai}{17}
+\contentsline {subsection}{\numberline {3.2.}Argentiniečių gestų kalbos atpažinimas}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.}Argentiniečių gestų kalbos atpažinimas}{17}
+\contentsline {subsection}{\numberline {3.3.}Lietuvių gestų kalbos atpažinimas}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.}Lietuvių gestų kalbos atpažinimas}{17}
+\contentsline {subsubsection}{\numberline {3.3.1.}Duomenų paruošimas}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.1.}Duomenų paruošimas}{17}
+\contentsline {subsubsection}{\numberline {3.3.2.}Modelio apmokymas}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.2.}Modelio apmokymas}{17}
+\contentsline {subsubsection}{\numberline {3.3.3.}Modelio testavimas}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.3.}Modelio testavimas}{17}
+\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{20}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.}Medžiagos darbo tema dėstymo skyriai}{18}
+\contentsline {section}{Rezultatai ir išvados}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Rezultatai ir išvados}{19}
+\contentsline {section}{Literatūra}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatūra}{20}
+\contentsline {section}{Sutartiniai žymėjimai}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Sąvokų apibrėžimai}{21}
+\contentsline {section}{Sąvokų apibrėžimai}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{22}
+\contentsline {section}{Santrumpos}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{22}
+\contentsline {section}{\MakeUppercase {Priedai}}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{23}
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{24}
+\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{27}

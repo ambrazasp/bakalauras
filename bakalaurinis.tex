@@ -14,6 +14,7 @@
 \usepackage{wrapfig}
 \usepackage{makecell}
 \usepackage{forest}
+\usepackage{pgfplots}
 
 \usepackage{enumitem}
 \setlist[1]{itemsep=-2pt}
@@ -288,10 +289,10 @@ Parceptronas (\textit{angl. perceptron}) – kompiuterinis modelis, skirtas atka
 	\node [align=center, above] at (\x*2,2) {\l};
 	
 	
-	\draw (0,1.49) node {$x_1$};
-	\draw (0,0.49) node {$x_2$};
+	\draw (0,1.49) node {$i_1$};
+	\draw (0,0.49) node {$i_2$};
 	\draw (0,0.045) node {$\vdots$};
-	\draw (0,-0.51) node {$x_n$};
+	\draw (0,-0.51) node {$i_n$};
 	\draw (0,-1.51) node {$1$};
 	
 	\draw (2,1.49) node {$w_1$};
@@ -302,27 +303,93 @@ Parceptronas (\textit{angl. perceptron}) – kompiuterinis modelis, skirtas atka
 	
 	\draw (4,0) node {$\sum$};
 	
-	\draw (6,0) node {$g(x)$};
+	\draw (6,0) node {$f(x)$};
 	
-	\draw (8,0) node {$x'$};
+	\draw (8,0) node {$o$};
 	\end{tikzpicture}
 	\caption{Perceptrono pavyzdys} \label{fig:perceptron}
 \end{figure}
 
 \ref{fig:perceptron} paveikslėlyje pavaizduotame pavyzdyje esančią išeigą galima aprašyti formule:
 \begin{equation}
-	x' = g((\sum_{i=0}^{n}x_i*w_i) + b)
+	o = f((\sum_{j=0}^{n}i_j \cdot w_j) + 1 \cdot b)
 \end{equation}
 
-Kiekvienas perceptronas gali gauti vieną ar kelias įeigas. Visų šių įeigų svorių suma yra sudedama ir paskui apdorojama aktyvacijos funkcija. Yra keletas skirtingų aktyvacijos funkcijų, tokių kaip:
+Kiekvienas perceptronas gali gauti vieną ar kelias įeigas (\textit{input}). Visų šių įeigų svorių suma yra sudedama ir paskui apdorojama aktyvacijos funkcija. Pritaikius aktyvacijos funkciją yra gaunama išeiga (\textit{output}). Yra keletas skirtingų aktyvacijos funkcijų. Pačios populiariausios pateikiamos \ref{fig:aktyvacijosfunkc} diagramoje.
+\begin{figure}
+	\centering
+	
+	\begin{tikzpicture}
+	\begin{axis}[
+	axis lines = left,
+	width=10cm,
+	xlabel = $x$,
+	ylabel = {$f(x)$},
+	ymax = 2,
+	ymajorgrids=true,
+	xmajorgrids=true,
+	legend pos=north west,
+	grid style=dashed,
+	]
+	%Below the red parabola is defined
+	\addplot [
+	domain=-6:6, 
+	samples=100, 
+	color=red,
+	]
+	{0.05*x};
+	\addlegendentry{tiesinė}
+	%Here the blue parabloa is defined
+	\addplot [
+	domain=-6:6,
+	samples=100, 
+	color=blue,
+	]
+	{1/(1+exp(-x))};
+	\addlegendentry{logistinė regresija}
+	
+	\addplot [
+	domain=-6:6,
+	samples=100, 
+	color=green,
+	]
+	{tanh(x)};
+	\addlegendentry{tanh}
+	
+	
+	\addplot [
+	domain=0:6,
+	samples=100, 
+	color=black,
+	]
+	{x};
+	\addlegendentry{ReLU}
+	
+	
+	\addplot [
+	domain=-6:0,
+	samples=100, 
+	color=black,
+	]
+	{0};
+	
+	\end{axis}
+	\end{tikzpicture}
+	
+	\caption{Aktyvacijos funkcijos} \label{fig:aktyvacijosfunkc}
+\end{figure}
+
+
+\ref{fig:aktyvacijosfunkc} diagramoje pateikiamos šios funkcijos:
+
 \begin{itemize}
-	\item $g(x) = ax$ – tiesinė;
-	\item $g(x) = \frac{1}{1+e^{-x}}$ – logistinės regresijos;
-	\item $g(x) = \tanh(x) = \frac{2}{1+e^{-2x}} - 1$ – tangentinė;
-	\item $g(x) = \begin{cases}
+	\item Tiesinė – $f(x) = a \cdot x$;
+	\item Logistinės regresijos – $f(x) = \frac{1}{1+e^{-x}}$;
+	\item Tanh – $f(x) = \tanh(x) = \frac{2}{1+e^{-2x}} - 1$;
+	\item ReLU – $f(x) = \begin{cases}
 	0 & \text{, kai } x < 0 \\
 	x & \text{, kai } x \ge 0
-	\end{cases} $ – ReLU.
+	\end{cases} $.
 \end{itemize}
 
 \subsection{Daugiasluosknis perceptronas}
@@ -362,11 +429,11 @@ Kiekvienas perceptronas gali gauti vieną ar kelias įeigas. Visų šių įeigų
 	\foreach \l [count=\x from 0] in {Įeigos, Paslėptasis, Išeigos}
 	\node [align=center, above] at (\x*2,2) {\l \\ sluoksnis};
 	\end{tikzpicture}
-	\caption{Dirbtinio neuroninio tinklo pavyzdys} \label{fig:ann}
+	\caption{Daugiasluoksnio perceptrono pavyzdys} \label{fig:ann}
 \end{figure}
 
 
-Dažniausiai daugiasluoksnis perceptronas turi tris ar daugiau sluoksnių, kurie kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
+Dažniausiai daugiasluoksnis perceptronas turi tris ar daugiau sluoksnių – įeigos (\textit{input layer}), paslėptasis (\textit{hidden layer}) ir išeigos (\textit{output layer}) sluoksnių. Paslėptajame sluoksnyje gali būti daugiau nei vienas sluoksnis. Daugiasluoksnis perceptronas kaip aktyvacijos funkciją naudoja nelinijines aktyvacijos funkcijas. Dažniausiai tai būna \textit{tanh} ar loginės regresijos funkcijos. Kiekvienas sluoksnio elementas yra sujungtas su kito sluoksnio elementu, todėl tai sudaro pilnai apjungtą (\textit{angl. fully connected}) tinklą. Yra pavyzdžių, kur daugiausluoksniai perceptronai naudojami atpažinti žodinę kalbą ar versti tekstus.
 
 \subsection{Dirbtiniai neuroniniai tinklai}
 \textbf{Dirbtiniai neuroniniai tinklai} (\textit{angl. artificial neural networks}) – struktūra, sukurta remiantis žmogaus nervinės sistemos darbu. Dirbtiniai neuroniniai tinklai gali būti išmokinti atlikti klasifikavimo, spėjimo, sprendimų priėmimo ir kitas užduotis.
@@ -425,7 +492,7 @@ Toliau, \ref{eq:convl} formulėje pateikiamas pavyzdys, kuriame naudojamos \ref{
 \textcolor{myyellow}{9} & \textcolor{myyellow}{2} & \textcolor{myyellow}{4} \\
 \textcolor{myyellow}{3} & \textcolor{myyellow}{7} & \textcolor{myyellow}{5}
 \end{bmatrix}
-*
+\cdot
 \begin{bmatrix}
 \textcolor{myblue}{1} & \textcolor{myblue}{0} & \textcolor{myblue}{1} \\
 \textcolor{myblue}{0} & \textcolor{myblue}{1} & \textcolor{myblue}{0} \\
@@ -440,12 +507,12 @@ Toliau, \ref{eq:convl} formulėje pateikiamas pavyzdys, kuriame naudojamos \ref{
 \end{equation}
 
 \begin{equation}\label{eq:convl1}
-\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myyellow}{1}*\textcolor{myblue}{1}+\textcolor{myyellow}{8}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myyellow}{9}*\textcolor{myblue}{0}+\textcolor{myyellow}{2}*\textcolor{myblue}{1}=\textcolor{mygreen}{3}
+\textcolor{myred}{0} \cdot \textcolor{myblue}{1}+\textcolor{myred}{0} \cdot \textcolor{myblue}{0}+\textcolor{myred}{0} \cdot \textcolor{myblue}{0}+\textcolor{myred}{0} \cdot \textcolor{myblue}{0}+\textcolor{myyellow}{1} \cdot \textcolor{myblue}{1}+\textcolor{myyellow}{8} \cdot \textcolor{myblue}{0}+\textcolor{myred}{0} \cdot \textcolor{myblue}{1}+\textcolor{myyellow}{9} \cdot \textcolor{myblue}{0}+\textcolor{myyellow}{2} \cdot \textcolor{myblue}{1}=\textcolor{mygreen}{3}
 \end{equation}
 
 
 \begin{equation}\label{eq:convl2}
-\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myred}{0}*\textcolor{myblue}{0}+\textcolor{myred}{0}*\textcolor{myblue}{1}+\textcolor{myyellow}{1}*\textcolor{myblue}{0}+\textcolor{myyellow}{8}*\textcolor{myblue}{1}+\textcolor{myyellow}{6}*\textcolor{myblue}{0}+\textcolor{myyellow}{9}*\textcolor{myblue}{1}+\textcolor{myyellow}{2}*\textcolor{myblue}{0}+\textcolor{myyellow}{4}*\textcolor{myblue}{1}=\textcolor{mygreen}{21}
+\textcolor{myred}{0} \cdot \textcolor{myblue}{1}+\textcolor{myred}{0} \cdot \textcolor{myblue}{0}+\textcolor{myred}{0} \cdot \textcolor{myblue}{1}+\textcolor{myyellow}{1} \cdot \textcolor{myblue}{0}+\textcolor{myyellow}{8} \cdot \textcolor{myblue}{1}+\textcolor{myyellow}{6} \cdot \textcolor{myblue}{0}+\textcolor{myyellow}{9} \cdot \textcolor{myblue}{1}+\textcolor{myyellow}{2} \cdot \textcolor{myblue}{0}+\textcolor{myyellow}{4} \cdot \textcolor{myblue}{1}=\textcolor{mygreen}{21}
 \end{equation}
 
 \subsubsection{Telkimo sluoksnis}
@@ -510,7 +577,7 @@ max(
 \end{equation}
 
 \subsubsection{Atsisakymo sluoksnis}
-\textbf{Atsisakymo sluoksnis} (\textit{angl. dropout layer}) – konvoliucinių tinklų sluoksnis, skirtas normalizuoti ir sureguliuoti tarpusavyje susijusių neuronų sąryšius, skirtus perduoti signalus. Mokymo fazėje dažniausiai ištrinamos neuronuose esančios reikšmės tam, kad šis per naują apsimokytų. Galimai netgi atsisakoma tam tikrų neuronų darbo.
+\textbf{Atsisakymo sluoksnis} (\textit{angl. dropout layer}) – konvoliucinių tinklų sluoksnis, skirtas normalizuoti ir sureguliuoti tarpusavyje susijusių neuronų sąryšius, skirtus perduoti signalus. Mokymo fazėje dažniausiai ištrinamos neuronuose esančios reikšmės tam, kad šis per naują apsimokytų. Galimai netgi atsisakoma tam tikrų neuronų darbo \cite{DBLP:journals/corr/abs-1207-0580}.
 
 \begin{figure}[H]
 	\centering
@@ -622,7 +689,7 @@ Kur $h_t$ - paslėpto sluoksnio būsena laiko momentu $t$, kurią dar būtų gal
 	\label{img:tipai}
 \end{figure}
 
-\ref{img:tipai} paveikslėlyje pavaizduoti keturi skirtingi būdai, kuriais naudojantis rekurentiniai neuroniniai tinklai veikia. Rausvos spalvos kvadratėlis reiškia įeigą (\textit{angl. input}), žalsvas - paslėptuosius sluoksnius (\textit{angl. hidden layers}), o melsvas - išeigą (\textit{angl. output}). Pateikiami šie būdai:
+\ref{img:tipai} paveikslėlyje pavaizduoti keturi skirtingi būdai, kuriais naudojantis rekurentiniai neuroniniai tinklai veikia. Rausvos spalvos kvadratėlis reiškia įeigą, žalsvas - paslėptuosius sluoksnius, o melsvas - išeigą. Pateikiami šie būdai:
 
 \begin{itemize}
 	\item \textbf{Vienas su vienu} (\textit{angl. one to one}) – būdas, kuriame yra viena įeiga, paslėptasis sluoksnis ir išeiga. Šis būdas dažniausiai taikomas konstruojant konvoliucinius neuroninius tinklus. Kaip pavyzdį galima pateikti paveikslėlio atpažinimą. Tai galėtų būti statinės gestų kalbos atpažinimas;
@@ -635,57 +702,119 @@ Kur $h_t$ - paslėpto sluoksnio būsena laiko momentu $t$, kurią dar būtų gal
 	\end{itemize}
 \end{itemize}
 
-\subsubsection{Rekurentinių neuroninių tinklų architektūros}
+\subsubsection{Rekurentinių neuroninių tinklų modeliai}
 
-Viena pagrindinių problemų, su kuria susiduria paprastieji rekurentiniai neuroniniai tinklai yra nykstančių gradientų problema (\textit{angl. vanishing gradient problem}). Tai problema, kurios metu kiekvieno laiko momentu perceptronas apskaičiuoja naujas reiškmes iš praeitame žingsnyje turimų duomenų ir kaip įeiga priima praeito laiko momento išeigą. Dėl šios priežasties ilgainiui dėl per naują skaičiuojamų svorių, perceptronas susiduria su problema, kad „pamiršta“, kas buvo prieš daugiau nei vieną laiko momentą. Tai reiškia, kad rekurentiniai neuroniniai tinklai paprasčiausiai vadovaujasi trumpalaikės atminties principu. Dėl šios priežasties buvo sukurtos keletas skirtingų perceptrono perkurtų modelių, kurie sugebėtų atsiminti ir teisingai įvertinti esamą situaciją. Toliau pateikiami keletos iš tokių neuroninių tinklų architektūrų pavyzdžių.
+Viena pagrindinių problemų, su kuria susiduria paprastieji rekurentiniai neuroniniai tinklai yra nykstančių gradientų problema (\textit{angl. vanishing gradient problem}). Tai problema, kurios metu kiekvieno laiko momentu perceptronas apskaičiuoja naujas reiškmes iš praeitame žingsnyje turimų duomenų ir kaip įeiga priima praeito laiko momento išeigą. 
+
+\begin{equation}
+	f(w_n \cdot o_n)=o_{n+1}
+\end{equation}
+
+Šioje formulėje $w_n$ - $n$-tojo sluoksnio svoris, $o_n$ - $n$-tojo sluoksnio išeiga, o $f(x)$ - aktyvacijos funkcija.
+
+Tinklo pabaigoje gaunamas praradimas (\textit{angl. loss}) arba kitaip - skirtumas tarp to, kas turėjo būti gauta ir ką tinklas gauna. Sakysime, kad $f(o_n)$ yra praradimas bus funkcija $f$, kurios parametras $o_n$ yra paskutinio sluoksnio išeiga.
+
+Norint pakeisti $w_n$ ($n$-tojo elemento svorį), tai galima padaryti apskaičiuojant gradientą atsižvelgiant į $w_n$.
+
+\begin{equation}
+	\frac{\partial Loss}{\partial w_n} = \frac{\partial Loss}{\partial f(o_n)} \cdot \frac{\partial f(o_n)}{\partial w_n} = \frac{\partial Loss}{\partial f(o_n)} \cdot f'(o_n) \cdot w_n
+\end{equation}
+
+Čia $frac{\partial Loss}{\partial f(o_n)}$ yra dalinė išvestinė to, kaip skaičiuojamas praradimas. Svarbu tai, kad jis skaičiuojamas iš $f(o_n)$, todėl tai bus pastovi grįžtamojo ryšio (\textit{angl. backpropagation}) lygtis.
+
+Tęsiant toliau pirmojo svorio $w_1$ reikšmę galima apskaičiuoti pagal šią lygtį:
+
+\begin{equation}
+\frac{\partial Loss}{\partial w_1} = \frac{\partial Loss}{\partial f(o_n)} \cdot \frac{\partial f(o_n)}{\partial o_{n-1}} \cdots \frac{\partial f(o_2)}{\partial o_1} \cdot \frac{\partial f(o_1)}{\partial w_1} = \frac{\partial f(Loss)}{\partial f(o_n)} \cdot f'(o_n) \cdot w_n \cdots f'(o_1) * w_1
+\end{equation}
+
+Dėl šios priežasties ilgainiui dėl per naują skaičiuojamų svorių, perceptronas susiduria su problema, kad „pamiršta“, kas buvo prieš daugiau nei vieną laiko momentą - $w_1$ palaipsniui pradeda nebekisti dėl ilgų skaičiavimų ir tampa labai mažas. Tai reiškia, kad rekurentiniai neuroniniai tinklai paprasčiausiai vadovaujasi trumpalaikės atminties principu. Dėl šios priežasties buvo sukurtos keletas architektūrų, kurios sugebėtų atsiminti ir teisingai įvertinti esamą situaciją. Toliau pateikiami keletos iš tokių neuroninių tinklų architektūrų pavyzdžių.
 
 \subsubsubsection{LSTM}
+1997 metais Hochreiter ir Schmidhuber pristatė LSTM modelį, kuris, buvo manyta, galės išspręsti nykstančiųjų gradientų problemą. Šis modelis ypatingas tuo, jog kiekvienas įprastas paslėptojo sluoksnio mazags (\textit{angl. node}) yra pakeistas atminties ląstele \cite{DBLP:journals/corr/Lipton15}.
 
-\textbf{LSTM} – ilga trumpalaikė atmintis (\textit{angl. long short-term memory})
+\textbf{LSTM} – ilga trumpalaikė atmintis (\textit{angl. long short-term memory}) - RNN architektūra, kuri sugeba atsiminti informaciją ilgesniam laiko tarpui. 
 
-\subsubsubsection{BRNN}
+Paprasti RNN priima buvusią paslėptąją būseną, pritaiko aktyvacijos funkciją ir grąžina naują būseną. LSTM daro beveik tą patį, tik priima dar ir savo buvusią būseną ir grąžina savo naują būseną. 
+
+LSTM įveda naują sąvoką - vartai (\textit{angl. gate}). LSTM turi trijų skirtingų tipų vartus:
+
+\begin{itemize}
+	\item Užmaršties vartai (\textit{angl. forget gate}) - juose apdorojama praeita paslėptoji būsena ir dabartinė įeiga. Šių vartų išeiga - nuosprendis, ką vertėtų pasilikti ląstelės būsenoje, o ką - užmiršti. Kuo vertė artimesnė 1 - tuo tai labiau verta atsiminti, o arčiau 0 - pamiršti.
+	\item Įeigos vartai (\textit{angl. input gate}) - įeigos funkcija atnaujina ląstelės būseną.
+	\item Išeigos vartai (\textit{angl. output gate}) nusprendžia, kurios ląstelės būsenos reikšmės bus pridedamas į paslėptąją būseną, kuri bus visos ląselės išeiga. Taip pat labai svarbu paminėti ir faktą, kad pasiliekamos ir tos reikšmės ar būsenos, kurios manoma, kad bus reikalingos ateityje.
+\end{itemize}
 
 
-
-LSTM - long-short term memory
-https://arxiv.org/pdf/1506.00019.pdf
-https://medium.com/@erikhallstrm/using-the-dynamicrnn-api-in-tensorflow-7237aba7f7ea
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.12]{img/lstm}
+	\caption{Atminties mazgo pavyzdys}
+	\label{img:lstm}
+\end{figure}
 
 \subsection{Apjungiamieji tinklų modeliai}
 
 \section{Eksperimentinė dalis}
 
+Šioje dalyje bus aprašomi visi atlikti eksperimentai ir juose gauti rezultatai.
+
 \subsection{Panašūs darbai}
+Dar prieš metus, sistemų, kurios atpažintų gestų kalbą konvoliucinių ar rekurentinių tinklų pagalba, beveik nebuvo. 2017 metais Harish Chandra Thuwal ir Adhyan Srivastava iš Jamia Millia Islamia universiteto Naujajame Delyje sukūrė konvoliucinių ir rekurentinių neuroninių tinklų modeliu paremtą sistemą, kuri sugeba atpažinti gestų kalbą iš video srauto. Šiame darbe jie vaizdo įrašą verčia į kadrų seką ir apmoko konvoliucinį tinklą. Vėliau iš šių duomenų apmoko rekurentinį neuroninį tinklą. Svarbu paminėti, kad šie du studentai pasinaudojo argentiniečių gestų kalbos duomenų rinkiniu, kuriame ant kiekvienos rankos žmonės, kurie rodė gestus, buvo užsidėję skirtingų spalvų pirštines. Taip jie iš vaizdo įrašo kadrų ištrindavo visą foną ir palikdavo tik rankas, taip apmokydami sistemą be papildomų savybių.
+
+Naudojantis jų jau sukaupta patirtimi tobulinama sistema galiausiai atpažinti ir lietuvių kalbą.
+
 
 \subsection{Argentiniečių gestų kalbos atpažinimas}
 
-\begin{itemize}
-	\item 3 klasės po 45 video
-	\item Konvoliucija inception v3 
-	\item Final test accuracy - 100\%
-	\item 4000 žingsnių
-	\item Batch accuracy - 99.99\%
-	\item 10 epochs 81.27\%, 0.6431\% loss
-	\item 100 epochs 89.27\%, 0.4422\% loss
-	\item Testavimas: 93.33\%
-\end{itemize}
+Buvo pasirinkta apmokyti jau esamą Harish Chandra Thuwal ir Adhyan Srivastava sukurtą modelį, jį tobulinant.
 
-\begin{itemize}
-	\item 25 klasės po 50 video
-	\item Konvoliucija inception v3 
-	\item Final test accuracy - 91.9\%
-	\item 4000 žingsnių
-	\item Batch accuracy - 88.19\%
-	\item 100 epochs 91.99\%, 0.6839\% loss
-	\item 100 epochs 91.95\%, 0.6255\% loss wider
-	\item 100 epochs 16.55\%, 2.0566\% loss deep
-	\item 10 epochs 97.61\%, 0.2814\% loss getnetwork
-	\item 100 epochs 92.66\%, 0.5539\% loss getnetwork
-\end{itemize}
+\begin{table}[H]\footnotesize
+	\centering
+	\caption{Argentiniečių gestų kalbos bandymai su 3 klasėmis}
+	{\begin{tabular}{| c | c | c | c | c | c | c |} \hline
+		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Apmokymo\\tikslumas} & \thead{Epochų\\skaičius} & \thead{Tikslumas} & \thead{Praradimas} & \thead{Testavimas}  \\
+		\hline
+		1. & 3 & 100\% & 10 & 81.27\% & 0.6431 & 85.32\% \\
+		\hline
+		2. & 3 & 99.99\% & 100 & 89.27\% & 0.4422 & 93.33\% \\
+		\hline
+	\end{tabular}}
+	\label{tab:asl-bandymai1}
+\end{table}
+
+
+\begin{table}[H]\footnotesize
+	\centering
+	\caption{Argentiniečių gestų kalbos bandymai su 25 klasėmis}
+	{\begin{tabular}{| c | c | c | c | c | c | c |} \hline
+		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Apmokymo\\tikslumas} & \thead{Epochų\\skaičius} & \thead{RNN\\apmokymo\\tipas} & \thead{Tikslumas} & \thead{Praradimas}  \\
+		\hline
+		1. & 25 & 91.90\% & 100 & Platus & 91.99\% & 0.6839 \\
+		\hline
+		2. & 25 & 91.90\% & 100 & Platesnis & 91.95\% & 0.6255 \\
+		\hline
+		3. & 25 & 91.90\% & 100 & Gilus & 16.55\% & 2.0566 \\
+		\hline
+		4. & 25 & 91.90\% & 10 & Paprastas & 97.61\% & 0.2814 \\
+		\hline
+		5. & 25 & 91.90\% & 100 & Paprastas & 92.66\% & 0.5539 \\
+		\hline
+	\end{tabular}}
+	\label{tab:asl-bandymai2}
+\end{table}
+
 
 \subsection{Lietuvių gestų kalbos atpažinimas}
 
+Lietuvių kalbai su gestų kalbos atpažinimu naudojantis konvoliuciniais ar rekurentiniais neuroniniais tinklais oficialaus nieko nėra. Todėl toliau pateikiama, kas buvo atlikta ir kokie rezultatai buvo gauti naudojantis šiais metodais jau anksčiau aptartu ir perdarytu modeliu. 
+
 \subsubsection{Duomenų paruošimas}
+Lietuvių gestų kalbos žodyne pateikiama apie 9000 gestų. Žodynas rengiamas nuo 2004 metų kurčiųjų ir girdinčiųjų komandos. Šiame žodyne gestus galima rasti pagal žodį, gesto formą ar temą. Taip pat galima pasirinkti ar gesto ieškoti kaip atitinkamo žodžio ar naudojimo pavyzdžiuose. Susiradus tinkamą žodį yra aprašomos tokios specifikos kaip plaštakos forma, lūpų judesys, žodžio ar sakinio reikšmė. Tačiau iškyla viena problema - kiekvienas gestas turi tik po vieną video įrašą atitinkantį tą žodį. Toks kiekis duomenų yra per mažas, norint apmokyti sistemą. Galima iš sakinių, kuriuose yra žodžio naudojimo pavyzdžiai, taip pat išsikirpti gestus, atitinkančius norimą gestą. Tačiau tai padidintų kiekvienos klasės duomenų kiekį iki daugiausiai 5 vaizdo įrašų. Net ir toks duomenų kiekis yra per mažas.
+
+Nuspręsta duomenis susikurti pačiam. Teko pramokti lietuvių gestų kalbos gestus. Įsigilinti į gestų kalbos specifiką. Pirmiesiems bandymams buvo nufilmuota 3 skirtingų žodžių klasių gestai po 50 video įrašų kiekvienam. Filmuota buvo mobiliuoju telefonu atistojus prie gelsvos sienos. Filmuoti buvo du skirtingi asmenys.
+
+
 \subsubsection{Modelio apmokymas}
 
 \begin{itemize}
@@ -732,6 +861,15 @@ atitikti darbo tikslą.
 % šaltinių, kurie nebuvo paminėti tekste. Šaltinių sąraše rekomenduojame
 % necituoti savo kursinio darbo, nes tai nėra oficialus literatūros šaltinis.
 % Jei tokių nuorodų reikia, pateikti jas tekste.
+
+\sectionnonum{Sutartiniai žymėjimai}
+
+\begin{itemize}
+	\item $i_t$ – įeiga laiko momentu $t$
+	\item $o_t$ – išeiga laiko momentu $t$
+	\item $h_t$ – būsena laiko momentu $t$
+\end{itemize}
+
 
 \sectionnonum{Sąvokų apibrėžimai}
 

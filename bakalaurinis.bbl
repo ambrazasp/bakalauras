@@ -44,6 +44,53 @@
       \field{title}{Neural Networks and Learning Machines}
       \field{year}{2009}
     \endentry
+    \entry{DBLP:journals/corr/abs-1207-0580}{article}{}
+      \name{author}{5}{}{%
+        {{hash=881b7655f3886f90a9400902a521acdb}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E.},
+           given_i={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=6a147afa4569ce6cf23c0436e65d8486}{%
+           family={Srivastava},
+           family_i={S\bibinitperiod},
+           given={Nitish},
+           given_i={N\bibinitperiod}}}%
+        {{hash=c5e3a676e2ac1164b3afcd539c131fc9}{%
+           family={Krizhevsky},
+           family_i={K\bibinitperiod},
+           given={Alex},
+           given_i={A\bibinitperiod}}}%
+        {{hash=8d569d1d5b8b5a7836017a98b430f959}{%
+           family={Sutskever},
+           family_i={S\bibinitperiod},
+           given={Ilya},
+           given_i={I\bibinitperiod}}}%
+        {{hash=bd2be300d445e9f6db7808f9533e66cb}{%
+           family={Salakhutdinov},
+           family_i={S\bibinitperiod},
+           given={Ruslan},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad4c0e58acdd35644f94386fc311f1a9}
+      \strng{fullhash}{ad4c0e58acdd35644f94386fc311f1a9}
+      \field{labelalpha}{HSK\textsuperscript {+}12}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{Improving neural networks by preventing co-adaptation of feature detectors}
+      \field{volume}{abs/1207.0580}
+      \field{year}{2012}
+      \verb{eprint}
+      \verb 1207.0580
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1207.0580
+      \endverb
+    \endentry
     \entry{NIPS2012_4824}{incollection}{}
       \name{author}{3}{}{%
         {{hash=c5e3a676e2ac1164b3afcd539c131fc9}{%
