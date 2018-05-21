@@ -2147,11 +2147,13 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">WhoInt</bcf:citekey>
-    <bcf:citekey order="2">Hay09</bcf:citekey>
-    <bcf:citekey order="3">NIPS2012_4824</bcf:citekey>
-    <bcf:citekey order="4">DBLP:journals/corr/abs-1207-0580</bcf:citekey>
-    <bcf:citekey order="5">DBLP:journals/corr/Lipton15</bcf:citekey>
-    <bcf:citekey order="6">DBLP:journals/corr/Lipton15</bcf:citekey>
+    <bcf:citekey order="2">Gall</bcf:citekey>
+    <bcf:citekey order="3">doi:10.1080/09332480.2014.914768</bcf:citekey>
+    <bcf:citekey order="4">Hay09</bcf:citekey>
+    <bcf:citekey order="5">NIPS2012_4824</bcf:citekey>
+    <bcf:citekey order="6">DBLP:journals/corr/abs-1207-0580</bcf:citekey>
+    <bcf:citekey order="7">DBLP:journals/corr/Lipton15</bcf:citekey>
+    <bcf:citekey order="8">DBLP:journals/corr/Lipton15</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="anyt/global/" type="entry" sortscheme="anyt" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
