@@ -17,7 +17,7 @@
 \usepackage{pgfplots}
 
 \usepackage{enumitem}
-\setlist[1]{itemsep=-2pt}
+\setlist{noitemsep, topsep=0pt}
 
 \renewcommand\theadfont{\bfseries}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
@@ -316,7 +316,7 @@ Parceptronas (\textit{angl. perceptron}) – kompiuterinis modelis, skirtas atka
 \end{equation}
 
 Kiekvienas perceptronas gali gauti vieną ar kelias įeigas (\textit{input}). Visų šių įeigų svorių suma yra sudedama ir paskui apdorojama aktyvacijos funkcija. Pritaikius aktyvacijos funkciją yra gaunama išeiga (\textit{output}). Yra keletas skirtingų aktyvacijos funkcijų. Pačios populiariausios pateikiamos \ref{fig:aktyvacijosfunkc} diagramoje.
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	
 	\begin{tikzpicture}
@@ -745,8 +745,7 @@ LSTM įveda naują sąvoką - vartai (\textit{angl. gate}). LSTM turi trijų ski
 	\item Išeigos vartai (\textit{angl. output gate}) nusprendžia, kurios ląstelės būsenos reikšmės bus pridedamas į paslėptąją būseną, kuri bus visos ląselės išeiga. Taip pat labai svarbu paminėti ir faktą, kad pasiliekamos ir tos reikšmės ar būsenos, kurios manoma, kad bus reikalingos ateityje.
 \end{itemize}
 
-
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{img/lstm}
 	\caption{Atminties mazgo pavyzdys}
@@ -754,6 +753,17 @@ LSTM įveda naują sąvoką - vartai (\textit{angl. gate}). LSTM turi trijų ski
 \end{figure}
 
 \subsection{Apjungiamieji tinklų modeliai}
+
+\textbf{Apjungiamieji tinklų modeliai} - modeliai, kuriuose yra apjungiami konvoliuciniai ir rekurentiniai neuroniniai tinklai. Pagal RNN specifikacijas to daryti neturėtų būti prasmės, tačiau pagal dabartines KNN ir RNN galimybes, KNN kur kas geriau atpažįsta tam tikras pasikartojančias savybes, o RNN - jų kitimą laike. Todėl tokie apjungiamieji tinklų modeliai dažniausiai naudojami atpažįstant šnekamąją kalbą. Taip pat tokie modeliai puikiausiai tinka apjungiant įeigos sekas ir išvedant statines išeigas. 
+
+Yra du tipai apjungiamųjų tinklų modelių:
+\begin{itemize}
+	\item Viena įeiga - daug išeigų. Tokiu būdu iš vieno kadro RNN sugeba aprašyti kadrą pateikiant ne vieną tame kadre matomą objektą. Pavyzdžiui, pateikiant jūros su laivu vaizdą galima gauti aprašymą, kad matomas laivas, kuris plaukia jūra.
+	\item Daug įeigų - viena išeiga. Tokiu būdų iš kadrų sekos RNN sugeba generuoti vieną išeigą. Kitaip tariant duodant, pavyzdžiui, video srautą, bus gaunama konkrečios klasės išeiga.
+\end{itemize}
+
+Galima pastebėti, kad būtent šiuo atveju, modelis, kuris apdoros video srautą ir nuspręs, kurios klasės įeiga buvo įeitimi yra labai naudingas. Yra žinoma, kad netgi gerai apmokius sistemą KNN ji iš kadro gali nuspręsti koks veiksmas atliekamas ar kokiai klasei yra priskiriamas kadras. Šiuo atveju norint apmokyti sistemą atpažinti gestų kalbą galima pasinaudoti KNN skirstyti gestus pakadriui ir tuomet juos apjungus RNN modeliu galima išvesti vieną bendrą klasę, kuri ir bus bendra viso vaizdo srauto klasė.
+
 
 \section{Eksperimentinė dalis}
 
@@ -783,6 +793,9 @@ Buvo pasirinkta apmokyti jau esamą Harish Chandra Thuwal ir Adhyan Srivastava s
 	\label{tab:asl-bandymai1}
 \end{table}
 
+Pats pirmasis bandymas buvo atliktas su trimis klasėmis, apmokant sistemą ir skaidant vaizdo įrašo kadrus kaip paveikslėlius. Kiekvienam iš jų buvo nuimamas fonas (\textit{angl. background}) ir paliekamos tik rankų plaštakos. Todėl buvo toks didelis tikslumas.
+
+Antruoju bandymu buvo atsisakyta nuimti foną ir palikti kadrus tokius, kokie yra. Dėl padidinto epochų skaičiaus rezultatai tapo žymiai geresni.
 
 \begin{table}[H]\footnotesize
 	\centering
@@ -804,24 +817,95 @@ Buvo pasirinkta apmokyti jau esamą Harish Chandra Thuwal ir Adhyan Srivastava s
 	\label{tab:asl-bandymai2}
 \end{table}
 
+\ref{tab:asl-bandymai2} lentelėje pateikiami dar 5 bandymai atlikti su argentiniečių gestų kalba. Šiuo atveju buvo sistema buvo apmokyta KNN Inception v3 modeliu vieną kartą, o toliau buvo keičiami RNN apmokymo būdai. Galima pastebėti, kad giliuoju (\textit{angl. deep}) būdu rezultatai buvo prasčiausi. 
+
+Toliau bus aptariami skirtingi skirtingi RNN tinklo apmokymo tipai. Visi iš jų buvo apmokomi naudojantis LSTM modeliu. Visi keturi penki būdai naudojasi \textit{categorical crossentropy} praradimo apskaičiavimo metodu, \textit{softmax} aktyvacijos būdu ir \textit{adam} optimizatoriumi.
+
+\subsubsection{Paprastas tinklas}
+Sudėtis:
+\begin{itemize}
+	\item Du sluoksniai
+	\item Pirmajame - atsisakymo lygis 0,8
+	\item 128 - sluoksnių vienetų skaičius
+\end{itemize}
+
+\subsubsection{Gilus tinklas}
+Sudėtis:
+\begin{itemize}
+	\item Trys sluoksniai
+	\item Atsisakymo lygis 0,2 visuose lygiuose
+	\item 64 - sluoksnių vienetų skaičius
+\end{itemize}
+
+\subsubsection{Platus tinklas}
+Sudėtis:
+\begin{itemize}
+	\item Vienas sluoksnis
+	\item Atsisakymo lygis 0,2
+	\item 256 - sluoksnių vienetų skaičius
+\end{itemize}
+
+\subsubsection{Platesnis tinklas}
+Sudėtis:
+\begin{itemize}
+	\item Vienas sluoksnis
+	\item Atsisakymo lygis 0,2
+	\item 512 - sluoksnių vienetų skaičius
+\end{itemize}
 
 \subsection{Lietuvių gestų kalbos atpažinimas}
 
 Lietuvių kalbai su gestų kalbos atpažinimu naudojantis konvoliuciniais ar rekurentiniais neuroniniais tinklais oficialaus nieko nėra. Todėl toliau pateikiama, kas buvo atlikta ir kokie rezultatai buvo gauti naudojantis šiais metodais jau anksčiau aptartu ir perdarytu modeliu. 
 
 \subsubsection{Duomenų paruošimas}
-Lietuvių gestų kalbos žodyne pateikiama apie 9000 gestų. Žodynas rengiamas nuo 2004 metų kurčiųjų ir girdinčiųjų komandos. Šiame žodyne gestus galima rasti pagal žodį, gesto formą ar temą. Taip pat galima pasirinkti ar gesto ieškoti kaip atitinkamo žodžio ar naudojimo pavyzdžiuose. Susiradus tinkamą žodį yra aprašomos tokios specifikos kaip plaštakos forma, lūpų judesys, žodžio ar sakinio reikšmė. Tačiau iškyla viena problema - kiekvienas gestas turi tik po vieną video įrašą atitinkantį tą žodį. Toks kiekis duomenų yra per mažas, norint apmokyti sistemą. Galima iš sakinių, kuriuose yra žodžio naudojimo pavyzdžiai, taip pat išsikirpti gestus, atitinkančius norimą gestą. Tačiau tai padidintų kiekvienos klasės duomenų kiekį iki daugiausiai 5 vaizdo įrašų. Net ir toks duomenų kiekis yra per mažas.
+Lietuvių gestų kalbos žodyne pateikiama apie 9000 gestų. Žodynas rengiamas nuo 2004 metų kurčiųjų ir girdinčiųjų komandos. Šiame žodyne gestus galima rasti pagal žodį, gesto formą ar temą. Taip pat galima pasirinkti ar gesto ieškoti kaip atitinkamo žodžio ar naudojimo pavyzdžiuose. Susiradus tinkamą žodį yra aprašomos tokios specifikos kaip plaštakos forma, lūpų judesys, žodžio ar sakinio reikšmė. Tačiau iškyla viena problema - kiekvienas gestas turi tik po vieną video įrašą atitinkantį tą žodį. Toks kiekis duomenų yra per mažas, norint apmokyti sistemą. Galima iš sakinių, kuriuose yra žodžio naudojimo pavyzdžiai, taip pat išskirti gestus, atitinkančius norimą gestą. Tačiau tai padidintų kiekvienos klasės duomenų kiekį iki daugiausiai 5 vaizdo įrašų. Net ir toks duomenų kiekis yra per mažas.
 
-Nuspręsta duomenis susikurti pačiam. Teko pramokti lietuvių gestų kalbos gestus. Įsigilinti į gestų kalbos specifiką. Pirmiesiems bandymams buvo nufilmuota 3 skirtingų žodžių klasių gestai po 50 video įrašų kiekvienam. Filmuota buvo mobiliuoju telefonu atistojus prie gelsvos sienos. Filmuoti buvo du skirtingi asmenys.
-
+Nuspręsta duomenis susikurti. Teko pramokti lietuvių gestų kalbos gestus. Įsigilinti į gestų kalbos specifiką. Pirmiesiems bandymams buvo nufilmuota 3 skirtingų žodžių klasių gestai po 50 vaizdo įrašų kiekvienam. Filmuota buvo mobiliuoju telefonu atsistojus prie gelsvos sienos. Filmuoti buvo du skirtingi asmenys, kurių kiekvienas atliko po 25 vaizdo įrašus kiekvienai klasei.
 
 \subsubsection{Modelio apmokymas}
+
+Modelį buvo nuspręsta apmokyti pasinaudojant jau turimomis žiniomis ir jau turimu sukurtu modeliu jį patobulinant. Visų pirma buvo apmokyta sistema su trimis klasėmis „labas“, „mano“ ir „vardas“. Šie gestai visi atliekami dešiniąja ranka, todėl tai sistemai buvo manyta, kad turėtų šiek tiek palengvinti darbą su duomenimis.
+
+Pirmiausiai kiekvienas vaizdo įrašas buvo išskaidomas į kadrus. Dažniausiai gesto vaizdo įrašas truko apie 2 sekundes. Tai reiškia, kad filmuojant mobiliuoju įrenginiu pasirinkus 30 kadrų per sekundę būdą, kiekvienas gestas turėdavo apie 60 kadrų. Buvo nuspręsta, kad padaryti vienodus kiekius kadrų kiekvienam gestui. Tokiu atveju kadrų kiekis buvo pakeltas iki 120 kadrų kiekvienam vaizdo įrašui, kas lygu 4 sekundėms vaizdo įrašo. Kadangi visi įrašai skyrėsi savo ilgiu buvo nuspręsta, jei vaizdo įrašas per trumpas, paskutinį kadrą kartoti tiek kartų, kad visi įrašai turėtų vienodą kiekį kadrų. 
+
+\subsubsubsection{Pirmasis apmokymas}
+
+\textbf{Duomenys:}
+\begin{itemize}
+	\item 3 klasės
+	\item 45 vaizdo įrašai kiekvienai klasei
+\end{itemize}
+
+\textbf{Rezultatai:}
+
 
 \begin{itemize}
 	\item 3 klasės 45 kiekvienai klasei. bendrai 145
 	\item 121 training samples, 14 validation, 100 epochs, 86.93\% accuracy, 0.5081 total loss
 	\item 92.31\% tikslumas iš nematytų 13 video.
 \end{itemize}
+
+\subsubsubsection{Rezultatai}
+
+\begin{table}[H]\footnotesize
+	\centering
+	\caption{Lietuvių gestų kalbos bandymų rezultatai}
+	{\begin{tabular}{| c | c | c | c | c | c | c |} \hline
+		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Apmokymo\\tikslumas} & \thead{Epochų\\skaičius} & \thead{RNN\\apmokymo\\tipas} & \thead{Tikslumas} & \thead{Praradimas}  \\
+		\hline
+		1. & 25 & 91.90\% & 100 & Platus & 91.99\% & 0.6839 \\
+		\hline
+		2. & 25 & 91.90\% & 100 & Platesnis & 91.95\% & 0.6255 \\
+		\hline
+		3. & 25 & 91.90\% & 100 & Gilus & 16.55\% & 2.0566 \\
+		\hline
+		4. & 25 & 91.90\% & 10 & Paprastas & 97.61\% & 0.2814 \\
+		\hline
+		5. & 25 & 91.90\% & 100 & Paprastas & 92.66\% & 0.5539 \\
+		\hline
+	\end{tabular}}
+	\label{tab:lgk-bandymai}
+\end{table}
 
 \subsubsection{Modelio testavimas}
 
