@@ -2154,6 +2154,7 @@
     <bcf:citekey order="6">DBLP:journals/corr/abs-1207-0580</bcf:citekey>
     <bcf:citekey order="7">DBLP:journals/corr/Lipton15</bcf:citekey>
     <bcf:citekey order="8">DBLP:journals/corr/Lipton15</bcf:citekey>
+    <bcf:citekey order="9">DBLP:journals/corr/ChoMGBSB14</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="anyt/global/" type="entry" sortscheme="anyt" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
