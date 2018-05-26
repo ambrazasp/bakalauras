@@ -72,24 +72,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{\numberline {3.3.2.1.}Pirmasis apmokymas}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {3.3.2.2.}Antrasis bandymas}{23}
+\contentsline {paragraph}{\numberline {3.3.2.2.}Pirmasis 2 apmokymas}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.3.}Trečiasis bandymas}{23}
+\contentsline {paragraph}{\numberline {3.3.2.3.}Pirmasis 3 apmokymas}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{\numberline {3.3.2.4.}Antrasis bandymas}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.3.3.}Trečiasis bandymas}{24}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{\numberline {3.3.3.1.}Apibendrinimas}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.4.}Modelio testavimas}{24}
+\contentsline {subsubsection}{\numberline {3.3.4.}Modelio testavimas}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Rezultatai ir išvados}{25}
+\contentsline {section}{Rezultatai ir išvados}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Sutartiniai žymėjimai}{26}
+\contentsline {section}{Literatūra}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Sąvokų apibrėžimai}{27}
+\contentsline {section}{Sutartiniai žymėjimai}{28}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{28}
+\contentsline {section}{Sąvokų apibrėžimai}{29}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{28}
+\contentsline {section}{Santrumpos}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{29}
+\contentsline {section}{\MakeUppercase {Priedai}}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{30}
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{31}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{32}

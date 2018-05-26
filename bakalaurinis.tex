@@ -902,7 +902,7 @@ Buvo priimti tokie sprendimai, remiantis jau turimu argentiniečių gestų kalbo
 \end{enumerate}
 
 \subsubsubsection{Pirmasis apmokymas}
-
+HRLOE6
 \textbf{Duomenys:}
 \begin{itemize}
 	\item 3 klasės - „labas“, „mano“, „vardas“;
@@ -911,7 +911,58 @@ Buvo priimti tokie sprendimai, remiantis jau turimu argentiniečių gestų kalbo
 
 \textbf{Mokymas:}
 \begin{itemize}
+	\item KNN: 4000 žingsnių, galutinis tikslumas (final test accuracy) 98.9\%;
+	\item Spėjimai iš KNN 14307 iš 14400 teisingi (99.35\%)
+	\item RNN: 108 mokymo ir 12 pasitikrinimo vaizdo įrašų.
+\end{itemize}
+
+\textbf{DIAGRAMOS!!!!}
+
+\textbf{Rezultatai:}
+\begin{itemize}
 	\item KNN: \textbf{REZULTATAI};
+	\item RNN: Tikslumas 86.93\% ir 0.5081 praradimas.
+\end{itemize}
+
+
+
+\subsubsubsection{Pirmasis 2 apmokymas}
+PM1ITB
+Vietoj kartojimo gale - kartojimas viduryje max 2 kartus
+\textbf{Duomenys:}
+\begin{itemize}
+	\item 3 klasės - „labas“, „mano“, „vardas“;
+	\item 40 vaizdo įrašai kiekvienai klasei. Viso - 120.
+\end{itemize}
+
+\textbf{Mokymas:}
+\begin{itemize}
+	\item KNN: 4000 žingsnių, galutinis tikslumas (final test accuracy) 99.0\%;
+	\item Spėjimai iš KNN 14270 iš 14400 teisingi (99.10\%)
+	\item RNN: 108 mokymo ir 12 pasitikrinimo vaizdo įrašų.
+\end{itemize}
+
+\textbf{DIAGRAMOS!!!!}
+
+\textbf{Rezultatai:}
+\begin{itemize}
+	\item KNN: \textbf{REZULTATAI};
+	\item RNN: Tikslumas 86.93\% ir 0.5081 praradimas.
+\end{itemize}
+
+
+\subsubsubsection{Pirmasis 3 apmokymas}
+Kartojimas viduryje 3 kartus
+\textbf{Duomenys:}
+\begin{itemize}
+	\item 3 klasės - „labas“, „mano“, „vardas“;
+	\item 40 vaizdo įrašai kiekvienai klasei. Viso - 120.
+\end{itemize}
+
+\textbf{Mokymas:}
+\begin{itemize}
+	\item KNN: 4000 žingsnių, galutinis tikslumas (final test accuracy) 99.1\%;
+	\item Spėjimai iš KNN 14307 iš 144000
 	\item RNN: 108 mokymo ir 12 pasitikrinimo vaizdo įrašų.
 \end{itemize}
 
@@ -927,6 +978,9 @@ Buvo priimti tokie sprendimai, remiantis jau turimu argentiniečių gestų kalbo
 Antrajam bandymui su lietuvių gestų kalba buvo nufilmuota dar 22 papildomos LGK klasės. Kiekvienai klasei buvo nufilmuota po 20 video ir tuomet duomenys praplėsti iki 50 įrašų kiekvienai klasei pakeičiant įvairius parametrus tokius kaip ištempimas, sutraukimas, pasukimas. Plačiau - \textit{3.3.1. Duomenų paruošimas} skiltyje.
 
 \textbf{Duomenys:}
+KIR3RN
+491NFW
+HRQKWD
 \begin{itemize}
 	\item 25 klasės;
 	\item 40 vaizdo įrašai kiekvienai klasei. Viso - 1000.
@@ -984,7 +1038,7 @@ Toliau, \ref{tab:lgk-bandymai} lentelėje pateikiami visų trijų bandymų su li
 		\hline
 		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Vaizdo\\įrašų\\skaičius}  & \thead{Tikslumas} & \thead{Epochų\\skaičius}& \thead{Tikslumas} & \thead{Praradimas}  \\
 		\hline
-		1. & 3 & 120 & . & 100 & 86.93\% & 0.5081 \\
+		1. & 3 & 120 & 98.9\% & 100 & 86.93\% & 0.5081 \\
 		\hline
 		2. & 25 & 1000 & . & . & .\% & . \\
 		\hline
@@ -1006,7 +1060,9 @@ Turimi visi trys modeliai buvo ištestuoti su 20\% visų duomenų. Toliau pateik
 	\caption{Lietuvių gestų kalbos modelio testavimo rezultatai}
 	{\begin{tabular}{| c | c | c | c |}
 		\hline
-		\thead{Bandymo\\Nr.} & \thead{Nematytų\\duomenų\\kiekis} & \thead{TOP1\\pasirinkimas}  & \thead{TOP5\\pasirinkimas}  \\
+		\thead{Bandymo\\Nr.} & \thead{Nematytų\\duomenų\\kiekis} & \thead{KNN\\pasirinkimas}  & \thead{RNN\\pasirinkimas}  \\
+		\hline
+		1. & 3 & 83.92\% & 79.31\% \\
 		\hline
 		1. & 10 & . & . \\
 		\hline
