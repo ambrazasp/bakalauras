@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.9)  22 MAY 2018 18:37
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.9)  22 MAY 2018 18:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1889,37 +1889,36 @@ File: img/lstm.png Graphic file (type QTm)
  <use  "img/lstm.png" >
 
 LaTeX Warning: Citation 'DBLP:journals/corr/ChoMGBSB14' on page 18 undefined on
- input line 782.
+ input line 785.
 
-[18] [19] [20
+[18]
+File: img/gru.png Graphic file (type QTm)
+ <use  "img/gru.png" > [19] [20] [21
 
-] [21] [22] [23] [24]
+] [22] [23] [24] [25]
 
-LaTeX Warning: Empty bibliography on input line 1048.
+LaTeX Warning: Empty bibliography on input line 1059.
 
-[25
-
-] [26
+[26
 
 ] [27
 
 ] [28
 
+] [29
+
 ]
 File: img/fingers.png Graphic file (type QTm)
- <use  "img/fingers.png" > [29
+ <use  "img/fingers.png" > [30
 
 ]
 File: img/inception_v3.png Graphic file (type QTm)
 
-<use  "img/inception_v3.png" > [30
+<use  "img/inception_v3.png" > [31
 
 ] (./bakalaurinis.aux)
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -1931,12 +1930,12 @@ Package logreq Info: Writing requests to 'bakalaurinis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 54063 strings out of 493005
- 1306350 string characters out of 6134597
- 1841446 words of memory out of 5000000
- 57304 multiletter control sequences out of 15000+600000
+ 54066 strings out of 493005
+ 1306377 string characters out of 6134597
+ 1841466 words of memory out of 5000000
+ 57306 multiletter control sequences out of 15000+600000
  18151 words of font info for 89 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  161i,18n,181p,10501b,3426s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on bakalaurinis.pdf (31 pages).
+Output written on bakalaurinis.pdf (32 pages).

@@ -749,34 +749,37 @@ LSTM įveda naują sąvoką - vartai (\textit{angl. gate}). LSTM turi trijų ski
 	\label{img:lstm}
 \end{figure}
 
-
-\textbf{Paprastas tinklas}
+Toliau pateikiamos Tensorflow LSTM variacijos tinklo gavimui:
 \begin{itemize}
-	\item Du sluoksniai
-	\item Pirmajame - atsisakymo lygis 0,8
-	\item 128 - sluoksnių vienetų skaičius
+	\item \textbf{Paprastas tinklas}
+        \begin{itemize}
+        		\item Du sluoksniai
+	        	\item Pirmajame - atsisakymo lygis 0,8
+        		\item 128 - sluoksnių vienetų skaičius
+        \end{itemize}
+
+	\item \textbf{Gilus tinklas}
+	\begin{itemize}
+		\item Trys sluoksniai
+		\item Atsisakymo lygis 0,2 visuose lygiuose
+		\item 64 - sluoksnių vienetų skaičius
+	\end{itemize}
+
+	\item \textbf{Platus tinklas}
+	\begin{itemize}
+		\item Vienas sluoksnis
+		\item Atsisakymo lygis 0,2
+		\item 256 - sluoksnių vienetų skaičius	
+	\end{itemize}
+
+	\item \textbf{Platesnis tinklas}
+	\begin{itemize}
+		\item Vienas sluoksnis
+		\item Atsisakymo lygis 0,2
+		\item 512 - sluoksnių vienetų skaičius
+	\end{itemize}
 \end{itemize}
 
-\textbf{Gilus tinklas}
-\begin{itemize}
-	\item Trys sluoksniai
-	\item Atsisakymo lygis 0,2 visuose lygiuose
-	\item 64 - sluoksnių vienetų skaičius
-\end{itemize}
-
-\textbf{Platus tinklas}
-\begin{itemize}
-	\item Vienas sluoksnis
-	\item Atsisakymo lygis 0,2
-	\item 256 - sluoksnių vienetų skaičius
-\end{itemize}
-
-\textbf{Platesnis tinklas}
-\begin{itemize}
-	\item Vienas sluoksnis
-	\item Atsisakymo lygis 0,2
-	\item 512 - sluoksnių vienetų skaičius
-\end{itemize}
 
 \subsubsubsection{GRU}
 2014 metais Cho pristatė GRU modelį, kuris, buvo manyta, galės išspręsti nykstančiųjų gradientų problemą \cite{DBLP:journals/corr/ChoMGBSB14}. Šis modelis yra panašus į LSTM ir abu modeliai dažnai duoda labai panašius rezultatus.
@@ -788,6 +791,14 @@ Kaip ir LSTM taip ir GRU naudojasi vartais. Šiuo atveju yra dviejų tipų varta
 	\item \textbf{Atnaujinimo vartai} (\textit{angl. update gate}) - juose apdorojama nauja įeiga sudauginta su savo svoriu ir praėjusio laiko momento paslėptoji būsena su savo svoriu. Šie vartai nusprendžia, kiek aktuali praeituose laiko momentuose turima informacija ateityje;
 	\item \textbf{Atstatymo vartai} (\textit{angl. reset gate}) - šie vartai savo veiksmu niekuo nesiskiria nuo atnaujinimo vartų, tačiau jie skirti tam, kad nustatytų, kurios kitų laiko momentų informacijos verta atsisakyti.
 \end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{img/gru}
+	\caption{GRU mazgo pavyzdys}
+	\label{img:gru}
+\end{figure}
 
 \subsubsubsection{LSTM ir GRU skirtumai}
 
