@@ -32,7 +32,7 @@
 
 % Titulinio aprašas
 \university{Vilniaus universitetas}
-\faculty{Matematikos ir informatikos fakultetas}
+\faculty{Matematikos ir informatikos institutas}
 \department{Programų sistemų katedra}
 \papertype{Bakalauro darbas}
 \title{Gestų kalbos vienetų atpažinimas iš video srauto}
@@ -58,7 +58,7 @@
 
 \sectionnonumnocontent{Santrauka}
 
-Šiame darbe nagrinėjamas lietuvių gestų kalbos atpažinimas iš video srauto. Buvo susikurta lietuvių gestų kalbos duomenų bazė, kurią sudaro 22 gestai po 20 vaizdo įrašų kiekvienai klasei ir 3 gestai po 50 vaizdo įrašų kiekvienai klasei. Klasių, kurios turėjo po 20 vaizdo įrašų, video srautai buvo dauginami, kad kiekviena klasė turėtų po 50 vaizdinių įrašų. Remiantis šiais duomenimis buvo apmokomas konvoliucinis neuroninis tinklas pasinaudojant \textit{Inception v3} modeliu. Toliau, remiantis konvoliucinio neuroninio tinklo rezultatais, buvo apmokomas rekurentinis neuroninis tinklas. Galiausiai buvo sukurti trys skirtingi modeliai, gebantys atitinkamai atpažinti 3, 10 ir 25 skirtingas lietuvių gestų kalbos klases. Geriausius rezultatus davė 10 klasių modelis (87,34\%), tačiau didesnį panaudojamumą turi 25 lietuvių gestų kalbos klasių modelis, kuris 79,18\% tikslumu atspėja rodomo gesto klasę. Taigi galima daryti išvadą, kad gauti rezultatai duoda pakankamą tikslumą norint šį modelį pritaikyti realiame pasaulyje. Apmokius jį atpažinti daugiau klasių, panaudojamumas taptų žymiai didesnis.
+Šiame darbe nagrinėjamas lietuvių gestų kalbos atpažinimas iš video srauto. Buvo susikurta lietuvių gestų kalbos duomenų bazė, kurią sudaro 22 gestai po 20 vaizdo įrašų kiekvienai klasei ir 3 gestai po 50 vaizdo įrašų kiekvienai klasei. Klasių, kurios turėjo po 20 vaizdo įrašų, video srautai buvo transformuojami, kad kiekviena klasė turėtų po 50 vaizdinių įrašų. Remiantis šiais duomenimis buvo apmokomas konvoliucinis neuroninis tinklas pasinaudojant \textit{Inception v3} modeliu. Toliau, remiantis konvoliucinio neuroninio tinklo rezultatais, buvo apmokomas rekurentinis neuroninis tinklas. Galiausiai buvo sukurti trys skirtingi modeliai, gebantys atitinkamai atpažinti 3, 10 ir 25 skirtingas lietuvių gestų kalbos klases. Geriausius rezultatus davė 10 klasių modelis (87,34\%), tačiau didesnį panaudojamumą turi 25 lietuvių gestų kalbos klasių modelis, kuris 79,18\% tikslumu atspėja rodomo gesto klasę. Taigi galima daryti išvadą, kad gauti rezultatai duoda pakankamą tikslumą norint šį modelį pritaikyti realiame pasaulyje. Apmokius jį atpažinti daugiau klasių, panaudojamumas taptų žymiai didesnis.
 
 % Nurodomi iki 5 svarbiausių temos raktinių žodžių (terminų).
 % Vienas terminas gali susidėti iš kelių žodžių.
@@ -106,20 +106,21 @@ Kiekviena gestų kalba susideda iš \textbf{trijų} pagrindinių dalių:
 Išanalizuoti ir praktiškai išbandyti gestų kalbos vienetų atpažinimo galimybes iš video srauto.
 
 \subsectionnonum{Darbo uždaviniai}
-\begin{itemize}
+\begin{enumerate}
+	\item Išanalizuoti konvoliucinius ir rekurentinius neuroninius tinklus bei jų panaudojimo būdus, gestų kalbos kontekste;
 	\item Išsiaiškinti, kokie yra paruošti duomenų rinkiniai, kuriais naudojantis būtų galima apmokyti neuroninius tinklus;
-	\item Nustatyti, kokiu tikslumu modeliai gali atpažinti gestus iš video srauto;
-	\item Išanalizuoti konvoliucinius ir rekurentinius neuroninius tinklus bei jų panaudojimo būdus.
-\end{itemize}
+	\item Sukurti neuroniais tinklais paremtą modelį gestų kalbos atpažinimui;
+	\item Atlikti tyrimą ir nustatyti, kokiu tikslumu modeliai, skirti gestų atpažinimo uždaviniui, gali atpažinti lietuvių kalbos gestus iš video srauto;
+\end{enumerate}
 
 \subsectionnonum{Darbo eiga}
-\begin{itemize}
+\begin{enumerate}
 	\item Teorinės medžiagos analizė;
 	\item Panašių ir jau įgyvendintų projektų paieška;
 	\item Gestų kalbos video srautų paieška ir naujų vaizdo įrašų rengimas;
 	\item Modelio apmokymai;
 	\item Rezultatų palyginimai.
-\end{itemize}
+\end{enumerate}
 
 \subsectionnonum{Panaudotos priemonės}
 \begin{itemize}
@@ -229,12 +230,12 @@ Vien iš šio galimybių medžio galima matyti, kad pilnai užtenka sprendimui n
 \ref{tab:nepriziurimasPavyzdys} lentelėje pateikiamas pavyzdinis neprižiūrimam mokymui apmokyti paruoštų duomenų rinkinys. Duomenys tokie patys, kaip ir \ref{tab:priziurimasPavyzdys} lentelėje, tačiau nėra teisingo atsakymo sulpelio \textbf{„Raidė“}. Apmokius tokią sistemą būtent tokiais duomenimis vienas iš tikėtinų scenarijų, kur galima būtų panaudoti tokią sistemą, tai nuspėti, kokios raidės yra labiausiai tikėtinos ar tiesiog numatyti, kokia labiausiai tikėtina raidžių seka bus rodoma.
 
 
-\subsection{Praktinis mokymas}
-\textbf{Praktinis mokymas} (\textit{angl. reinforcement learning}) - labiausiai dirbtinį intelektą atitinkančių apsimokančių sistemų apmokymo modelis. Šis mokymas pagrįstas praktiniais bandymais. Kiekvienas teisingai gautas rezultatas yra būdas, kuriuo reikėtų sekti, ir kiekvienas blogai gautas rezultatas, yra būdas, kurio vertėtų atsisakyti. Dažniausiai šis apmokymo būdas naudojamas sistemą apmokant žaisti žaidimus. Vienas iš labiausiai žinomų būtent šiuo apmokymo būdu apmokytų modelių yra \textit{AlphaZero}, kuris sugeba laimėti prieš pasaulio šachmatų čempionus. Tai puikus pavyzdys to, kaip kompiuteris iš laimėjimų, už kuriuos gauna taškus, ir pralaimėjimų, už kuriuos jam taškai atimami, sugeba rasti laimėjimo strategijas kiekviename žingsnyje ir taip, nuolatos tobulėdamas, laimėti dvikovas ar apskritai spręsti uždavinius, kuriuose reikalingas pastabumas ir strategijų kūrimas.
+\subsection{Skatinamasis mokymas}
+\textbf{Skatinamasis mokymas} (\textit{angl. reinforcement learning}) - labiausiai dirbtinį intelektą atitinkančių apsimokančių sistemų apmokymo modelis. Šis mokymas pagrįstas praktiniais bandymais. Kiekvienas teisingai gautas rezultatas yra būdas, kuriuo reikėtų sekti, ir kiekvienas blogai gautas rezultatas, yra būdas, kurio vertėtų atsisakyti. Dažniausiai šis apmokymo būdas naudojamas sistemą apmokant žaisti žaidimus. Vienas iš labiausiai žinomų būtent šiuo apmokymo būdu apmokytų modelių yra \textit{AlphaZero}, kuris sugeba laimėti prieš pasaulio šachmatų čempionus. Tai puikus pavyzdys to, kaip kompiuteris iš laimėjimų, už kuriuos gauna taškus, ir pralaimėjimų, už kuriuos jam taškai atimami, sugeba rasti laimėjimo strategijas kiekviename žingsnyje ir taip, nuolatos tobulėdamas, laimėti dvikovas ar apskritai spręsti uždavinius, kuriuose reikalingas pastabumas ir strategijų kūrimas.
 
 
 \section{Neuroniniai tinklai}
-Žmogaus smegenys yra labai sudėtingas, nelijinis ir paralelinis kompiuteris \cite{Hay09}. Kiekvieno žmogaus kūnas yra sudarytas iš milijardų nervinių ląstelių vadinamų neuronais. Jie sukuria ir/arba perduoda elektrocheminius impulsus. Neuronai tarpusavyje yra sujungti dendritais, ant kurių yra sinapsės. 
+Žmogaus smegenys yra labai sudėtingas, netiesinis ir paralelinis kompiuteris \cite{Hay09}. Kiekvieno žmogaus kūnas yra sudarytas iš milijardų nervinių ląstelių vadinamų neuronais. Jie sukuria ir/arba perduoda elektrocheminius impulsus. Neuronai tarpusavyje yra sujungti dendritais, ant kurių yra sinapsės. 
 
 Kiekvienas sužadintas neuronas dėl pasikeitusios temperatūros, spaudimo, skausmo ar kitų veiksnių, perduoda informaciją į smegenis dėl sprendimo, ką daryti, priėmimo. Neuronų paskirtis - siųsti signalą iš vieno neurono į kitą, kol galiausiai signalas pasiekia smegenis. Svarbu ir tai, kad kiekvienas neuronas yra nepriklausomas nuo kito. Tai tik grandis, kuri yra atsakinga už signalo priėmimą ir perdavimą. Smegenims gavus signalą, jį apdorojus ir priėmus sprendimą, signalas tuo pačiu keliu siunčiamas atgal, kol pirmąjį sužadinimą gavęs neuronas sulaukia atsakymo. 
 
@@ -300,14 +301,14 @@ Parceptronas (\textit{angl. perceptron}) – kompiuterinis modelis, skirtas atka
 	
 	\draw (6,0) node {$f(x)$};
 	
-	\draw (8,0) node {$o$};
+	\draw (8,0) node {$o_i$};
 	\end{tikzpicture}
 	\caption{Perceptrono pavyzdys} \label{fig:perceptron}
 \end{figure}
 
 \ref{fig:perceptron} paveikslėlyje pavaizduotame pavyzdyje esančią išeigą galima aprašyti formule:
 \begin{equation}
-	o = f((\sum_{j=0}^{n}i_j \cdot w_j) + 1 \cdot b)
+	o_i = f((\sum_{j=0}^{n}i_j \cdot w_j) + 1 \cdot b)
 	\label{eq:perceptron}
 \end{equation}
 
@@ -665,13 +666,14 @@ max(
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{img/rnn}
-	\caption{Rekurentinių neuroninių tinklų veikimo principas}
-	\label{img:rnn}
+	\caption[]{Rekurentinių neuroninių tinklų veikimo principas\footnotemark}
+	\label{img:RNT}
 \end{figure}
+\footnotetext{\url{https://cdn-images-1.medium.com/max/1600/0*WdbXF_e8kZI1R5nQ.png}}
 
-\ref{img:rnn} paveiksėlyje yra pavaizduotas bendrinis rekurentinių neuroninių tinklų veikimo principas, kurį galima užrašyti formule:
+\ref{img:RNT} paveiksėlyje yra pavaizduotas bendrinis rekurentinių neuroninių tinklų veikimo principas, kurį galima užrašyti formule:
 
-\begin{equation}\label{eq:rnn}
+\begin{equation}\label{eq:RNT}
 h_t = f_w(h_{t-1}, x_t)
 \end{equation}
 
@@ -683,9 +685,10 @@ Kur $h_t$ - paslėpto sluoksnio būsena laiko momentu $t$, kurią dar būtų gal
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/nn-tipai}
-	\caption{Rekurentinių neuroninių tinklų tipai}
+	\caption[]{Rekurentinių neuroninių tinklų tipai\footnotemark}
 	\label{img:tipai}
 \end{figure}
+\footnotetext{\url{https://discuss.pytorch.org/uploads/default/original/1X/6415da0424dd66f2f5b134709b92baa59e604c55.jpg}}
 
 \ref{img:tipai} paveikslėlyje pavaizduoti keturi skirtingi būdai, kuriais naudojantis rekurentiniai neuroniniai tinklai veikia. Rausvos spalvos kvadratėlis reiškia įeigą, žalsvas - paslėptuosius sluoksnius, o melsvas - išeigą. Pateikiami šie būdai:
 
@@ -726,14 +729,14 @@ Tęsiant toliau, pirmojo svorio $w_1$ reikšmę galima apskaičiuoti pagal šią
 \frac{\partial Loss}{\partial w_1} = \frac{\partial Loss}{\partial f(h_n)} \cdot \frac{\partial f(h_n)}{\partial h_{n-1}} \cdots \frac{\partial f(h_2)}{\partial h_1} \cdot \frac{\partial f(h_1)}{\partial w_1} = \frac{\partial f(Loss)}{\partial f(h_n)} \cdot f'(h_n) \cdot w_n \cdots f'(h_1) * w_1
 \end{equation}
 
-Dėl šios priežasties ilgainiui dėl per naują skaičiuojamų svorių, perceptronas susiduria su problema, kad „pamiršta“, kas buvo prieš daugiau nei vieną laiko momentą - $w_1$ palaipsniui pradeda nebekisti dėl ilgų skaičiavimų ir tampa labai mažas. Tai reiškia, kad rekurentiniai neuroniniai tinklai paprasčiausiai vadovaujasi trumpalaikės atminties principu. Dėl šios priežasties buvo sukurtos keletas architektūrų, kurios sugebėtų atsiminti ir teisingai įvertinti esamą situaciją. Toliau pateikiama dažniausiai šiuo metu naudojamos RNN architektūros spręsti šią problemą.
+Dėl šios priežasties ilgainiui dėl per naują skaičiuojamų svorių, perceptronas susiduria su problema, kad „pamiršta“, kas buvo prieš daugiau nei vieną laiko momentą - $w_1$ palaipsniui pradeda nebekisti dėl ilgų skaičiavimų ir tampa labai mažas. Tai reiškia, kad rekurentiniai neuroniniai tinklai paprasčiausiai vadovaujasi trumpalaikės atminties principu. Dėl šios priežasties buvo sukurtos keletas architektūrų, kurios sugebėtų atsiminti ir teisingai įvertinti esamą situaciją. Toliau pateikiama dažniausiai šiuo metu naudojamos RNT architektūros spręsti šią problemą.
 
 \subsubsubsection{LSTM}
 1997 metais Hochreiter ir Schmidhuber pristatė LSTM modelį, kuris, buvo manyta, galės išspręsti nykstančiųjų gradientų problemą. Šis modelis ypatingas tuo, jog kiekvienas įprastas paslėptojo sluoksnio mazags (\textit{angl. node}) yra pakeistas atminties ląstele \cite{DBLP:journals/corr/Lipton15}.
 
-\textbf{LSTM} – ilga trumpalaikė atmintis (\textit{angl. long short-term memory}) - RNN architektūra, kuri sugeba atsiminti informaciją ilgesniam laiko tarpui. 
+\textbf{LSTM} – ilga trumpalaikė atmintis (\textit{angl. long short-term memory}) - RNT architektūra, kuri sugeba atsiminti informaciją ilgesniam laiko tarpui. 
 
-Paprasti RNN priima buvusią paslėptąją būseną, pritaiko aktyvacijos funkciją ir grąžina naują būseną. LSTM daro beveik tą patį, tik priima dar ir savo buvusią būseną ir grąžina savo naują būseną. 
+Paprasti RNT priima buvusią paslėptąją būseną, pritaiko aktyvacijos funkciją ir grąžina naują būseną. LSTM daro beveik tą patį, tik priima dar ir savo buvusią būseną ir grąžina savo naują būseną. 
 
 LSTM įveda naują sąvoką - vartai (\textit{angl. gate}). LSTM turi trijų skirtingų tipų vartus:
 
@@ -746,9 +749,10 @@ LSTM įveda naują sąvoką - vartai (\textit{angl. gate}). LSTM turi trijų ski
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.12]{img/lstm}
-	\caption{Atminties mazgo pavyzdys}
+	\caption[]{Atminties mazgo pavyzdys\footnotemark}
 	\label{img:lstm}
 \end{figure}
+\footnotetext{\url{https://upload.wikimedia.org/wikipedia/commons/5/53/Peephole_Long_Short-Term_Memory.svg}}
 
 Toliau pateikiamos \textit{Tensorflow} LSTM variacijos tinklo gavimui:
 \begin{itemize}
@@ -785,7 +789,7 @@ Toliau pateikiamos \textit{Tensorflow} LSTM variacijos tinklo gavimui:
 \subsubsubsection{GRU}
 2014 metais Cho pristatė GRU modelį, kuris, buvo manyta, galės išspręsti nykstančiųjų gradientų problemą \cite{DBLP:journals/corr/ChoMGBSB14}. Šis modelis yra panašus į LSTM ir abu modeliai dažnai duoda labai panašius rezultatus.
 
-\textbf{GRU} – uždaromas pasikartojantis vienetas (\textit{angl. gated recurrent unit}) - RNN architektūra, kuri sugeba atsimintį informaciją ilgesniam laiko tarpui. 
+\textbf{GRU} – uždaromas pasikartojantis vienetas (\textit{angl. gated recurrent unit}) - RNT architektūra, kuri sugeba atsimintį informaciją ilgesniam laiko tarpui. 
 
 Kaip ir LSTM taip ir GRU naudojasi vartais. Šiuo atveju yra dviejų tipų vartai:
 \begin{itemize}
@@ -797,9 +801,10 @@ Kaip ir LSTM taip ir GRU naudojasi vartais. Šiuo atveju yra dviejų tipų varta
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5, trim={0 0 12.9cm 0}, clip]{img/gru}
-	\caption{GRU mazgo pavyzdys}
+	\caption[]{GRU mazgo pavyzdys\footnotemark}
 	\label{img:gru}
 \end{figure}
+\footnotetext{\url{https://qph.ec.quoracdn.net/main-qimg-d4725497028c5a60241e1524c32f60de.webp}}
 
 \subsubsubsection{LSTM ir GRU skirtumai}
 
@@ -807,15 +812,15 @@ LSTM ir GRU skiriasi tik skirtingais skaičiavimais neuronuose. Skiriasi vartų 
 
 \subsection{Apjungiamieji tinklų modeliai}
 
-\textbf{Apjungiamieji tinklų modeliai} - modeliai, kuriuose yra apjungiami konvoliuciniai ir rekurentiniai neuroniniai tinklai. Pagal RNN specifikacijas to daryti neturėtų būti prasmės, tačiau pagal dabartines KNN ir RNN galimybes, KNN kur kas geriau atpažįsta tam tikras pasikartojančias savybes, o RNN - jų kitimą laike. Todėl tokie apjungiamieji tinklų modeliai dažniausiai naudojami atpažįstant šnekamąją kalbą. Taip pat tokie modeliai puikiausiai tinka apjungiant įeigos sekas ir išvedant statines išeigas. 
+\textbf{Apjungiamieji tinklų modeliai} - modeliai, kuriuose yra apjungiami konvoliuciniai ir rekurentiniai neuroniniai tinklai. Pagal RNT specifikacijas to daryti neturėtų būti prasmės, tačiau pagal dabartines KNT ir RNT galimybes, KNT kur kas geriau atpažįsta tam tikras pasikartojančias savybes, o RNT - jų kitimą laike. Todėl tokie apjungiamieji tinklų modeliai dažniausiai naudojami atpažįstant šnekamąją kalbą. Taip pat tokie modeliai puikiausiai tinka apjungiant įeigos sekas ir išvedant statines išeigas. 
 
 Yra du tipai apjungiamųjų tinklų modelių:
 \begin{itemize}
-	\item Viena įeiga - daug išeigų. Tokiu būdu iš vieno kadro RNN sugeba aprašyti kadrą pateikiant ne vieną tame kadre matomą objektą. Pavyzdžiui, pateikiant jūros su laivu vaizdą galima gauti aprašymą, kad matomas laivas, kuris plaukia jūra.
-	\item Daug įeigų - viena išeiga. Tokiu būdu iš kadrų sekos RNN sugeba generuoti vieną išeigą. Kitaip tariant duodant, pavyzdžiui, apdorojant video srautą, bus gaunama konkrečios klasės išeiga.
+	\item Viena įeiga - daug išeigų. Tokiu būdu iš vieno kadro RNT sugeba aprašyti kadrą pateikiant ne vieną tame kadre matomą objektą. Pavyzdžiui, pateikiant jūros su laivu vaizdą galima gauti aprašymą, kad matomas laivas, kuris plaukia jūra.
+	\item Daug įeigų - viena išeiga. Tokiu būdu iš kadrų sekos RNT sugeba generuoti vieną išeigą. Kitaip tariant duodant, pavyzdžiui, apdorojant video srautą, bus gaunama konkrečios klasės išeiga.
 \end{itemize}
 
-Galima pastebėti, kad būtent šiuo atveju, modelis, kuris apdoros video srautą ir nuspręs, kurios klasės išeiga bus gaunama yra labai naudingas. Yra žinoma, kad netgi gerai apmokius sistemą KNN ji iš kadro gali nuspręsti koks veiksmas atliekamas ar kokiai klasei yra priskiriamas kadras. Šiuo atveju norint apmokyti sistemą atpažinti gestų kalbą galima pasinaudoti KNN skirstyti gestus pakadriui ir tuomet juos apjungus RNN modeliu galima išvesti vieną bendrą klasę, kuri ir bus bendra viso vaizdo srauto klasė.
+Galima pastebėti, kad būtent šiuo atveju, modelis, kuris apdoros video srautą ir nuspręs, kurios klasės išeiga bus gaunama yra labai naudingas. Yra žinoma, kad netgi gerai apmokius sistemą KNT ji iš kadro gali nuspręsti koks veiksmas atliekamas ar kokiai klasei yra priskiriamas kadras. Šiuo atveju norint apmokyti sistemą atpažinti gestų kalbą galima pasinaudoti KNT skirstyti gestus pakadriui ir tuomet juos apjungus RNT modeliu galima išvesti vieną bendrą klasę, kuri ir bus bendra viso vaizdo srauto klasė.
 
 \section{Eksperimentinė dalis}
 
@@ -830,8 +835,8 @@ Buvo pasirinkta apmokyti jau esamą Harish Chandra Thuwal ir Adhyan Srivastava s
 
 \subsubsection{Sistemos savybės}
 \begin{itemize}
-	\item KNN - Inception v3 modelis
-	\item RNN - LSTM architektūra
+	\item KNT - Inception v3 modelis
+	\item RNT - LSTM architektūra
 \end{itemize}
 
 \subsubsection{Bandymai}
@@ -857,7 +862,7 @@ Antruoju bandymu buvo atsisakyta nuimti foną ir palikti kadrus tokius, kokie yr
 	\centering
 	\caption{Argentiniečių gestų kalbos bandymai su 25 klasėmis}
 	{\begin{tabular}{| c | c | c | c | c | c | c |} \hline
-		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Apmokymo\\tikslumas} & \thead{Epochų\\skaičius} & \thead{RNN\\apmokymo\\tipas} & \thead{Tikslumas} & \thead{Praradimas}  \\
+		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Apmokymo\\tikslumas} & \thead{Epochų\\skaičius} & \thead{RNT\\apmokymo\\tipas} & \thead{Tikslumas} & \thead{Praradimas}  \\
 		\hline
 		1. & 25 & 91.90\% & 100 & Platus & 91.99\% & 0.6839 \\
 		\hline
@@ -873,11 +878,11 @@ Antruoju bandymu buvo atsisakyta nuimti foną ir palikti kadrus tokius, kokie yr
 	\label{tab:asl-bandymai2}
 \end{table}
 
-\ref{tab:asl-bandymai2} lentelėje pateikiami dar 5 bandymai atlikti su argentiniečių gestų kalba. Šiuo atveju sistemos KNN modelis buvo apmokytas vieną kartą, o toliau buvo keičiami RNN apmokymo būdai. Šie būdai buvo paremti LSTM modeliu. Galima pastebėti, kad giliuoju (\textit{angl. deep}) būdu rezultatai buvo prasčiausi. 
+\ref{tab:asl-bandymai2} lentelėje pateikiami dar 5 bandymai atlikti su argentiniečių gestų kalba. Šiuo atveju sistemos KNT modelis buvo apmokytas vieną kartą, o toliau buvo keičiami RNT apmokymo būdai. Šie būdai buvo paremti LSTM modeliu. Galima pastebėti, kad giliuoju (\textit{angl. deep}) būdu rezultatai buvo prasčiausi. 
 
 \subsection{Lietuvių gestų kalbos atpažinimas}
 
-Nėra jokių oficialių duomenų lietuvių gestų kalbos atpažinimui naudojantis konvoliuciniais ar rekurentiniais neuroniniais tinklais. Šie bandymai, manoma, kad yra pirmieji naudojantis rekurentiniais neuroniniais tinklais atpažinti LGK. Konvoliucinių neuroninių tinklų pagalba tokį darbą dariau prieš metus, skirtą atpažinti statinę gestų kalbos abėcėlę pasinaudojant Inception v3 modeliu.
+Nėra jokios mokslinės literatūros, kurioje būtų aprašyti lietuvių gestų kalbos atpažinimui skirti modeliai, kurie remiasi konvoliuciniais ar rekurentiniais neuroniniais tinklais. Šie bandymai, manoma, kad yra pirmieji naudojantis rekurentiniais neuroniniais tinklais atpažinti LGK. Konvoliucinių neuroninių tinklų pagalba tokį darbą dariau prieš metus, skirtą atpažinti statinę gestų kalbos abėcėlę pasinaudojant Inception v3 modeliu.
 
 Šių eksperimentų tikslas - išbandyti galimybes atpažinti gestų kalbą, nes lietuvių gestų kalbos atpažinimas iš video srauto galėtų palengvinti ne tik gestų kalbos nesuprantantiesiems bendrauti su gestakalbiais, bet ir, pavyzdžiui, turėti galimybę versti žodinę kalbą į gestų kalbą. 
 
@@ -886,7 +891,7 @@ Toliau pateikiamas visas darbas padarytas su lietuvių gestų kalbos atpažinimu
 \subsubsection{Duomenų paruošimas}
 Oficialiame lietuvių gestų kalbos žodyne, kurį pristato \textbf{neįgaliųjų reikalų departamentas prie socialinės apsaugos ir darbo ministerijos}, pateikiama apie 9000 gestų. Žodynas rengiamas nuo 2004 metų kurčiųjų ir girdinčiųjų komandos. Šiame žodyne gestus galima rasti pagal žodį, gesto formą ar temą. Taip pat galima pasirinkti ar gesto ieškoti kaip atitinkamo žodžio ar naudojimo pavyzdžiuose. Susiradus tinkamą žodį yra aprašomos tokios specifikos kaip plaštakos forma, lūpų judesys, žodžio ar sakinio reikšmė. 
 
-Naudojantis šiuo žodynu iškyla viena pagrindinė problema - kiekvienas gestas turi tik po vieną video įrašą atitinkantį tą žodį. Toks kiekis duomenų yra per mažas, norint apmokyti sistemą RNN būdu. Galima iš sakinių, kuriuose yra žodžio naudojimo pavyzdžiai, taip pat išskirti gestus, atitinkančius norimą gestą. Tačiau tai padidintų kiekvienos klasės duomenų kiekį iki daugiausiai 5 vaizdo įrašų. Net ir toks duomenų kiekis yra per mažas.
+Naudojantis šiuo žodynu iškyla viena pagrindinė problema - kiekvienas gestas turi tik po vieną video įrašą atitinkantį tą žodį. Toks kiekis duomenų yra per mažas, norint apmokyti sistemą RNT būdu. Galima iš sakinių, kuriuose yra žodžio naudojimo pavyzdžiai, taip pat išskirti gestus, atitinkančius norimą gestą. Tačiau tai padidintų kiekvienos klasės duomenų kiekį iki daugiausiai 5 vaizdo įrašų. Net ir toks duomenų kiekis yra per mažas.
 
 Nuspręsta duomenis susikurti. Teko pramokti lietuvių gestų kalbos gestus. Įsigilinti į gestų kalbos specifiką. Pirmiesiems bandymams buvo nufilmuota 3 skirtingų žodžių klasių gestai po 50 vaizdo įrašų kiekvienam iš jų, kas yra tapatu 150 video įrašų. Filmuota buvo mobiliuoju telefonu rodančiąjam atsistojus prie gelsvos sienos. Filmuoti buvo du skirtingi asmenys, kurių kiekvienas atliko po 25 vaizdo įrašus kiekvienai klasei. Buvo pasirinkta pirmiesiems bandymams pasinaudoti „labas“, „mano“, „vardas“ žodžių klasėmis. Kiekvienas vaizdo įrašas truko ne ilgiau nei 3 sekundes.
 
@@ -926,7 +931,7 @@ Vėliau buvo nufilmuotos dar 10 skirtingų gestų klasių. Šiuo atveju buvo nuf
 
 \subsubsection{Modelio apmokymas}
 
-Modelį buvo nuspręsta apmokyti pasinaudojant Harish Chandra Thuwal ir Adhyan Srivastava jau sukurtu modeliu, jau atliktus jam patobulinimus išbandant argentiniečių gestų kalbos atpažinimą. Vienas iš svarbiausių pakeitimų - nenutrinti fono kadruose. Taip pat pakeistas epochų skaičius, RNN LSTM tinklo apmokymo tipas, perdarytas testavimo mechanizmas.
+Modelį buvo nuspręsta apmokyti pasinaudojant Harish Chandra Thuwal ir Adhyan Srivastava jau sukurtu modeliu, jau atliktus jam patobulinimus išbandant argentiniečių gestų kalbos atpažinimą. Vienas iš svarbiausių pakeitimų - nenutrinti fono kadruose. Taip pat pakeistas epochų skaičius, RNT LSTM tinklo apmokymo tipas, perdarytas testavimo mechanizmas.
 
 Visų pirma buvo apmokyta sistema su trimis klasėmis „labas“, „mano“ ir „vardas“, turinčiomis po 50 vaizdo įrašų (\textit{žr. \ref{tab:lgk-duomenys} lentelė}). Šie gestai visi atliekami dešiniąja ranka, todėl tai sistemai, buvo manyta, turėtų šiek tiek palengvinti darbą su duomenimis.
 
@@ -936,7 +941,7 @@ Buvo priimti tokie sprendimai, remiantis jau turimu argentiniečių gestų kalbo
 \begin{enumerate}
 	\item Vaizdo įrašą skaidyti į 120 kadrų (vietoje 200 turimame mokymo mechanizme). Jei įrašas per trumpas - paskutinį kadrą kartoti $n$ kartų, kol bus 120 kadrų;
 	\item Konvoliucinį neuroninį tinklą apmokyti Inception v3 modeliu (\textit{žr. \ref{appendix:inception_v3} priede});
-	\item RNN apmokyti pasirinkus paprastą modelį, kuris naudojasi LSTM architektūra;
+	\item RNT apmokyti pasirinkus paprastą modelį, kuris naudojasi LSTM architektūra;
 	\item Mokymo - testavimo aibę skaidyti į 80\% mokymui ir 20\% testavimui, todėl mokymui buvo skirta 40 vaizdo įrašų, o testavimui - 10.
 \end{enumerate}
 
@@ -953,9 +958,9 @@ Buvo priimti tokie sprendimai, remiantis jau turimu argentiniečių gestų kalbo
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas (\textit{angl. final test accuracy}) - 98.9\%;
-	\item Buvo atlikti spėjimai su KNN, kuris teisingai atspėjo 14307 iš 14400 kadrų (tikslumas - 99.35\%);
-	\item RNN: Tikslumas 86.93\% ir 0.5081 praradimas;
+	\item KNT: galutinis tikslumas (\textit{angl. final test accuracy}) - 98.9\%;
+	\item Buvo atlikti spėjimai su KNT, kuris teisingai atspėjo 14307 iš 14400 kadrų (tikslumas - 99.35\%);
+	\item RNT: Tikslumas 86.93\% ir 0.5081 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:3kl} priede.
 \end{itemize}
 
@@ -968,9 +973,9 @@ Nuspręsta, jei vaizdo įrašas yra mažesnis nei 120 kadrų, kartoti kadrus neb
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas - 99.0\%;
-	\item Buvo atlikti spėjimai su KNN, kuris teisingai atspėjo 14270 iš 14400 kadrų (tikslumas - 99.10\%);
-	\item RNN: Tikslumas 87.5\% ir 0.4995 praradimas;
+	\item KNT: galutinis tikslumas - 99.0\%;
+	\item Buvo atlikti spėjimai su KNT, kuris teisingai atspėjo 14270 iš 14400 kadrų (tikslumas - 99.10\%);
+	\item RNT: Tikslumas 87.5\% ir 0.4995 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:3kl} priede.
 \end{itemize}
 
@@ -983,16 +988,16 @@ Nuspręsta patobulinti antruoju bandymu padarytą pakeitimą. Padaryta, kad jei 
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas - 99.1\%;
-	\item Buvo atlikti spėjimai su KNN, kuris teisingai atspėjo 14307 iš 14400 kadrų (tikslumas - 99.35\%);
-	\item RNN: Tikslumas 88.33\% ir 0.4832 praradimas;
+	\item KNT: galutinis tikslumas - 99.1\%;
+	\item Buvo atlikti spėjimai su KNT, kuris teisingai atspėjo 14307 iš 14400 kadrų (tikslumas - 99.35\%);
+	\item RNT: Tikslumas 88.33\% ir 0.4832 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:3kl} priede.
 \end{itemize}
 
 \bigbreak
 \textbf{Apibendrinimas}
 
-Šiais trimis bandymais naudojantis trimis skirtingomis LGK klasėmis buvo pastebėta, kad geresni rezultatai gaunami tuomet, kai kartojamas gestas yra viduryje, kuomet ir yra svarbiausia jį pastebėti ir atpažinti. Toks sprendimas buvo priimtas dėl KNN apsimokymo galimybių ir bendrų savybių išskyrimo. Kartojimas tose vietose, kuriose labiausiai pasireiškia gesto savybės ir jo atskyrimas nuo kitų klasių, yra geresnis sprendimas apmokant KNN, nei kartojimas pačiame vaizdo įrašo gale, pasinaudojant paskutiniu kadru, nes tuomet rodantysis stovi nuleidęs rankas ar pozicijoje, kurioje didžiojoje klasių dalyje yra pradedami ir pabaigiami gestai.
+Šiais trimis bandymais naudojantis trimis skirtingomis LGK klasėmis buvo pastebėta, kad geresni rezultatai gaunami tuomet, kai kartojamas gestas yra viduryje, kuomet ir yra svarbiausia jį pastebėti ir atpažinti. Toks sprendimas buvo priimtas dėl KNT apsimokymo galimybių ir bendrų savybių išskyrimo. Kartojimas tose vietose, kuriose labiausiai pasireiškia gesto savybės ir jo atskyrimas nuo kitų klasių, yra geresnis sprendimas apmokant KNT, nei kartojimas pačiame vaizdo įrašo gale, pasinaudojant paskutiniu kadru, nes tuomet rodantysis stovi nuleidęs rankas ar pozicijoje, kurioje didžiojoje klasių dalyje yra pradedami ir pabaigiami gestai.
 
 Pastebėta, kad rezultatai ypatingai nesiskyrė, bet gauti geriausi rezultatai, nors ir minimalūs, paskutiniu bandymu. Nuspręsta naudotis šiuo (trečiuoju bandymu) susikurtu metodu, vykdant tolimesnius apmokymus pasinaudojant daugiau klasių.
 
@@ -1002,7 +1007,7 @@ Antruoju apmokymu buvo pasirinktos 10 klasių (4-13 klasės (\textit{žr. \ref{t
 
 Kiekvieną vaizdo įrašą skaidant į gestus, jei gestas per trumpas, gesto vaizdo įrašo centrinė dalis kartojama 2-3 kartus (\textit{plačiau - 3.3.2.1. 3 klasių apmokymas. Trečiasis bandymas}). 
 
-Prieš skaidant vaizdo įrašus į kadrus, iš eilės, jei vaizdo įrašų kiekis klasėje yra mažesnis nei 50, kiekvienas vaizdo įrašas yra pakartojamas antrąjį kartą. Jei mažesnis nei 25 - vaizdo įrašas pakartojamas trečiąjį kartą. Taip daroma tol, kol bendras skaičius vaizdo įrašų pasiekia 50. Tačiau kiekvienam vaizdo įrašo pakartojimui yra pritaikomos modifikacijos. Vaizdo įrašo kadrai yra ištempiami ir suspaudžiami pasinaudojus atsitiktiniais metodais.
+Prieš skaidant vaizdo įrašus į kadrus, iš eilės, jei vaizdo įrašų kiekis klasėje yra mažesnis nei 50, kiekvienas vaizdo įrašas yra pakartojamas antrąjį kartą. Jei mažesnis nei 25 - vaizdo įrašas pakartojamas trečiąjį kartą. Taip daroma tol, kol bendras skaičius vaizdo įrašų pasiekia 50. Tačiau kiekvienam vaizdo įrašo pakartojimui yra pritaikomos modifikacijos. Vaizdo įrašo kadrai yra ištempiami ir suspaudžiami pasinaudojus atsitiktinėmis transformacijomis.
 
 \begin{figure}[H]
 	\centering
@@ -1034,7 +1039,7 @@ Taip pat, šiame žingsnyje buvo pritaikytas automatinis LGK klasių vaizdo įra
 
 Šio apmokymo metu visi bandymai buvo atlikti konvoliucinį neuroninį tinklą apmokius vieną kartą.
 
-Buvo nuspręsta pasinaudoti giliuoju RNN tinklu vietoje paprasto.
+Buvo nuspręsta pasinaudoti giliuoju RNT tinklu vietoje paprasto.
 
 \underline{Duomenys:}
 
@@ -1050,8 +1055,8 @@ Buvo nuspręsta pasinaudoti giliuoju RNN tinklu vietoje paprasto.
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas - 96.3\%;
-	\item RNN: Tikslumas 93.58\% ir 0.3727 praradimas;
+	\item KNT: galutinis tikslumas - 96.3\%;
+	\item RNT: Tikslumas 93.58\% ir 0.3727 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:10kl} priede.
 \end{itemize}
 
@@ -1060,12 +1065,12 @@ Buvo nuspręsta pasinaudoti giliuoju RNN tinklu vietoje paprasto.
 
 \underline{Pakeitimai:}
 
-Nuspręsta padidinti RNN epochų skaičių nuo 50 iki 100 ir pakeisti iš gilaus tiklo į paprastą tinklą.
+Nuspręsta padidinti RNT epochų skaičių nuo 50 iki 100 ir pakeisti iš gilaus tiklo į paprastą tinklą.
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas - 96.3\%;
-	\item RNN: Tikslumas 45.61\% ir 1.419 praradimas;
+	\item KNT: galutinis tikslumas - 96.3\%;
+	\item RNT: Tikslumas 45.61\% ir 1.419 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:10kl} priede.
 \end{itemize}
 
@@ -1079,15 +1084,15 @@ Pastebėjus, kad gauti labai prasti rezultatai antruoju bandymu, buvo nuspręsta
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas - 96.3\%;
-	\item RNN: Tikslumas 94.28\% ir 0.3563 praradimas;
+	\item KNT: galutinis tikslumas - 96.3\%;
+	\item RNT: Tikslumas 94.28\% ir 0.3563 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:10kl} priede.
 \end{itemize}
 
 \bigbreak
 \textbf{Apibendrinimas}
 
-Pastebėta, kad didinant epochų skaičių (pirmas ir trečias bandymai) galutinis RNN tikslumas kinta, bet nėra didelis. Šio apmokymo pabaigoje buvo nuspręsta, kad geriau palikti 50 epochų skaičių vietoje 100, kadangi rezultatas beveik nekinta, o laiko užima 2 kartus daugiau. Taip pat pastebėta, kad 3 klasių apmokyme paprastas RNN LSTM tinklas buvo puikus sprendimas, duodantis po 10 epochų labai aukštus rezultatus, tačiau padidinus klasių skaičių nuo 3 iki 10, paprastas tinklas grąžina prastus rezultatus. To pasekoje buvo nuspręsta geriau naudoti gilųjį tinklą vietoj paprastojo tęsiant bandymus.
+Pastebėta, kad didinant epochų skaičių (pirmas ir trečias bandymai) galutinis RNT tikslumas kinta, bet nėra didelis. Šio apmokymo pabaigoje buvo nuspręsta, kad geriau palikti 50 epochų skaičių vietoje 100, kadangi rezultatas beveik nekinta, o laiko užima 2 kartus daugiau. Taip pat pastebėta, kad 3 klasių apmokyme paprastas RNT LSTM tinklas buvo puikus sprendimas, duodantis po 10 epochų labai aukštus rezultatus, tačiau padidinus klasių skaičių nuo 3 iki 10, paprastas tinklas grąžina prastus rezultatus. To pasekoje buvo nuspręsta geriau naudoti gilųjį tinklą vietoj paprastojo tęsiant bandymus.
 
 \subsubsubsection{25 klasių apmokymas}
 
@@ -1104,8 +1109,8 @@ Trečiojo apmokymo metu buvo pasinaudota visomis duomenų paruošimo stadijoje p
 
 \underline{Rezultatai:}
 \begin{itemize}
-	\item KNN: galutinis tikslumas (\textit{angl. final test accuracy}) - 89.1\%;
-	\item RNN: Tikslumas 92.89\% ir 0.4361 praradimas;
+	\item KNT: galutinis tikslumas (\textit{angl. final test accuracy}) - 89.1\%;
+	\item RNT: Tikslumas 92.89\% ir 0.4361 praradimas;
 	\item Mokymosi grafikai pateikiami \ref{appendix:25kl} priede.
 \end{itemize}
 
@@ -1118,8 +1123,8 @@ Toliau, \ref{tab:lgk-bandymai} lentelėje pateikiami visų trijų apmokymų su l
 	{\begin{tabular}{| c | c | c | c | c | c | c |}
 		\cline{4-7}
 		\multicolumn{3}{ c |}{} & 
-		\multicolumn{1}{ c |}{\thead{KNN}} &
-		\multicolumn{3}{ c |}{\thead{RNN}} \\
+		\multicolumn{1}{ c |}{\thead{KNT}} &
+		\multicolumn{3}{ c |}{\thead{RNT}} \\
 		\hline
 		\thead{Bandymo\\Nr.} & \thead{Klasių\\skaičius} & \thead{Vaizdo\\įrašų\\skaičius}  & \thead{Tikslumas} & \thead{Epochų\\skaičius}& \thead{Tikslumas} & \thead{Praradimas}  \\
 		\hline
@@ -1133,26 +1138,26 @@ Toliau, \ref{tab:lgk-bandymai} lentelėje pateikiami visų trijų apmokymų su l
 	\label{tab:lgk-bandymai}
 \end{table}
 
-Galima pastebėti, kad nėra didelio KNN ir RNN tikslumų ir praradimų skirtumo tarp modelių juos apmokius. Pastebėta, kad epochų skaičius apmokant RNN - 50 ar 100 - neturi didelės įtakos bendro modelio tikslumo gerinimui. Taip pat verta pastebėti, kad klasių skaičius nedarė didelės įtakos KNN ir RNN tikslumams. 
+Galima pastebėti, kad nėra didelio KNT ir RNT tikslumų ir praradimų skirtumo tarp modelių juos apmokius. Pastebėta, kad epochų skaičius apmokant RNT - 50 ar 100 - neturi didelės įtakos bendro modelio tikslumo gerinimui. Taip pat verta pastebėti, kad klasių skaičius nedarė didelės įtakos KNT ir RNT tikslumams. 
 
-Matomas tikslumo mažėjimas KNN modelio didėjant klasių skaičiui. Šis tikslumas mažėja, manoma, todėl, kad didesnis klasių skaičius ir tarpusavyje tarp klasių esantys bendri panašumai sunkina gesto atpažinimą iš kadro. Juolab svarbu ir tai, kad KNN mokosi iš kiekvieno kadro atskirai ir jų kitimas laike turi įtakos bendram rezultatui.
+Matomas tikslumo mažėjimas KNT modelio didėjant klasių skaičiui. Šis tikslumas mažėja, manoma, todėl, kad didesnis klasių skaičius ir tarpusavyje tarp klasių esantys bendri panašumai sunkina gesto atpažinimą iš kadro. Juolab svarbu ir tai, kad KNT mokosi iš kiekvieno kadro atskirai ir jų kitimas laike turi įtakos bendram rezultatui.
 
-Kintant klasių skaičiui didėja RNN modelio tikslumas. Manoma, taip yra todėl, kad didesnis bendras duomenų kiekis leidžia geriau apsimokyti sistemai, kadangi apmokant 25 klasių modelį buvo sukurta daugiau nei 120 tūkstančių kadrų, iš kurių mokėsi modelis (palyginimui - 3 klasių modeliui buvo sukurti virš 14 tūkstančių kadrų). 
+Kintant klasių skaičiui didėja RNT modelio tikslumas. Manoma, taip yra todėl, kad didesnis bendras duomenų kiekis leidžia geriau apsimokyti sistemai, kadangi apmokant 25 klasių modelį buvo sukurta daugiau nei 120 tūkstančių kadrų, iš kurių mokėsi modelis (palyginimui - 3 klasių modeliui buvo sukurti virš 14 tūkstančių kadrų). 
 
 Lyginant rezultatus, manoma, kad didesniam nei 88\% daug įtakos tikslumui turėjo ir gerai paruošta LGK duomenų bazė. Toks bazės paruošimas palengvina apsimokymo procesą, pagerina rezultatus. Daug triukšmo ir netinkamų duomenų turintys rinkiniai, turėtų daug įtakos blogesniems rezultatams.
 
-Reikėtų labiau įsigilinti į rezultatų priklausomybę nuo klasių ir apmokymo nustatymų. Reikėtų išbandyti RNN LSTM platų, platesnį būdus su geriausiais modeliais ir stebėti bendrus pasikeitimus. Taip pat reikėtų išbandyti didesnę duomenų augmentaciją, mokymui skirtą duomenų bazę praplėsti, išbandyti su daugiau klasių ir mokymo rinkinį paruošti iš daugiau skirtingų rodančiųjų duomenų bei daugiau trikdžių ir triukšmo turinčioje aplinkoje, pavyzdžiui, miške, prie spalvotų sienų ar kitur.
+Reikėtų labiau įsigilinti į rezultatų priklausomybę nuo klasių ir apmokymo nustatymų. Reikėtų išbandyti RNT LSTM platų, platesnį būdus su geriausiais modeliais ir stebėti bendrus pasikeitimus. Taip pat reikėtų išbandyti didesnę duomenų augmentaciją, mokymui skirtą duomenų bazę praplėsti, išbandyti su daugiau klasių ir mokymo rinkinį paruošti iš daugiau skirtingų rodančiųjų duomenų bei daugiau trikdžių ir triukšmo turinčioje aplinkoje, pavyzdžiui, miške, prie spalvotų sienų ar kitur.
 
 \subsubsection{Modelio testavimas}
 
-Turimi visi trys modeliai buvo ištestuoti su 20\% visų duomenų. Kiekvienas testavimo vaizdo įrašas buvo skaidomas į kadrus kaip ir apmokymo metu. Tačiau sistema KNN pagalba tik spėliojo pagal kadrus, koks tai gestas galėtų būti ir tuomet visa surinkta informacija, buvo duodama RNN galutiniam sprendimui padaryti. Toliau pateikiami visų trijų apmokymų testavimai ir jų rezultatai.
+Turimi visi trys modeliai buvo ištestuoti su 20\% visų duomenų. Kiekvienas testavimo vaizdo įrašas buvo skaidomas į kadrus kaip ir apmokymo metu. Tačiau sistema KNT pagalba tik spėliojo pagal kadrus, koks tai gestas galėtų būti ir tuomet visa surinkta informacija, buvo duodama RNT galutiniam sprendimui padaryti. Toliau pateikiami visų trijų apmokymų testavimai ir jų rezultatai.
 
 \begin{table}[H]\footnotesize
 	\centering
 	\caption{Lietuvių gestų kalbos modelių testavimo rezultatai}
 	{\begin{tabular}{| c | c | c | c |}
 		\hline
-		\thead{Bandymo\\Nr.} & \thead{Nematytų\\duomenų\\kiekis} & \thead{KNN\\pasirinkimas}  & \thead{RNN\\pasirinkimas}  \\
+		\thead{Bandymo\\Nr.} & \thead{Nematytų\\duomenų\\kiekis} & \thead{KNT\\pasirinkimas}  & \thead{RNT\\pasirinkimas}  \\
 		\hline
 		1. & 30 & 83.92\% & 79.31\% \\
 		\hline
@@ -1172,47 +1177,42 @@ Galima pastebėti, kad modeliai su dideliu tikslumu teisingai nusprendžia rodom
 
 Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia pabandyti ištestuoti su daugiau gestų pavyzdžių. Taip pat reikėtų išbandyti šių modelių testavimą su kitų žmonių rodomais gestais. Manoma, kad nufilmavus gestus trikdžių pilnoje aplinkoje, testavimo rezultatai būtų kur kas prastesni. 
 
-%\begin{table}[H]\footnotesize
-%	\centering
-%	\caption{Lietuvių gestų kalbos modelio testavimo rezultatai su netvarkingais duomenimis}
-%	{\begin{tabular}{| c | c | c | c |}
-%		\hline
-%		\thead{Bandymo\\Nr.} & \thead{Nematytų\\duomenų\\kiekis} & \thead{TOP1\\pasirinkimas}  & \thead{TOP5\\pasirinkimas}  \\
-%		\hline
-%		1. & 6 & . & . \\
-%		\hline
-%		2. & 25 & . & . \\
-%		\hline
-%		3. & 25 & . & . \\
-%		\hline
-%	\end{tabular}}
-%	\label{tab:lgk-testavimas2}
-%\end{table}
+\subsection{Duomenų rinkimo rekomendacijos}
+
+Naudojantis jau sukaupta patirtimi ir atliktais eksperimentais aprašytais šiame darbe yra \textbf{rekomenduojama}:
+
+\begin{itemize}
+	\item Naujų lietuvių gestų kalbos klasių rinkimas ir peržiūra;
+	\item Jau esamų LGK klasių pildymas;
+	\item Vaizdo įrašų kiekis kiekvienoje klasėje neprivalo būti vienodas, tačiau patartina turėti bent 20 vaizdo įrašų kiekvienai klasei;
+	\item Pirmiesiems apmokymams vaizdo įrašai turi būti gerai atrinkti ir be papildomų trikdžių;
+	\item Vertėtų rinkti ir trikdžių (pasikeitusi aplinka, neypač tiksliai parodytas gestas ir kt.) turinčius vaizdo įrašus, tam, kad papildomai galima būtų apmokyti modelį atpažinti gestų klases įvairiose aplinkose;
+	\item Patartina, kad gestus rodytų skirtingi asmenys.
+\end{itemize}
+
 
 \sectionnonum{Rezultatai ir išvados}
 
 \subsectionnonumnocontent{Rezultatai}
 \begin{enumerate}
-	\item Išanalizuotos konvoliucinių neuroninių tinklų ypatybės. Pastebėta, kad vienas plačiausiai naudojamų KNN modelis yra Inception v3. Neuroniniai tinklai labai gerai sugeba išskirti ir rasti pasikartojančias savybes;
-	\item Išanalizuotos rekurentinių neuroninių tinklų ypatybės. Išsiaiškinta, kad RNN sprendžia kitimo laike problemas, o paprastieji RNN turi nykstančiųjų gradientų problemą. Rastos ir išnagrinėtos architektūros, sprendžiančios šią problemą. Populiariausia iš jų - LSTM;
-	\item Išsiaiškinta, kad yra skirtingų tipų RNN, kurie gali generuoti skirtingą kiekį išeigų priimdami skirtingą kiekį įeigų. Iš šių savybių buvo pastebėta, kad labiausiai tinkantis RNN būdas šio darbo gestų kalbos atpažinimui - daug su vienu sąryšis (daug kadrų įeigų ir vienos klasės išeiga); 
-	\item Išsiaiškinta, kad apjungtieji neuroniniai tinklai, kurie apjungia KNN ir RNN, gali būti plačiai pritaikomi tuose uždaviniuose, kuriuose reikalinga rasti savybes kiekviename laiko momente ir tas savybes apjungti į bendrą visumą. Taip pat išsaiškinta, kad idealiu atveju tokių apjungimų nereikėtų, tačiau dabar RNN akcentuojasi labiau į kitimą laike, nei į savybių atpažinimą;
-	\item Išanalizuotos gestų kalbos ypatybės. Pastebėta, kad dinaminė gestų kalba ir jos mokymąsis yra sudėtingas procesas, reikalaujantis labai daug laiko ir pastangų;
+	\item Išanalizuotos konvoliucinių ir rekurentinių neuroninių tinklų ypatybės;
+	\item Suformuluota RNT užduotis pasinaudojant daug su vienu sąryšiu;
 	\item Išanalizuotos gestų kalbos vienetų atpažinimo iš video srauto galimybės. Pastebėta, kad geriausias būdas tai daryti - pasinaudoti apjungtuoju neuroninių tinklų modeliu;
 	\item Sukurta lietuvių gestų kalbos 25 skirtingų gestų duomenų bazė, susidedanti iš 22 klasių, kurių kiekviena turi po 20 vaizdo įrašų, ir 3 klasių, kurių kiekviena turi po 50 vaizdo įrašų;
 	\item Sukurti trys skirtingi lietuvių gestų kalbos modeliai, kurie atpažįsta 3, 10 ir 25 skirtingas LGK klases;
 	\item Sukurti trys lietuvių gestų kalbos modeliai buvo apmokyti su 80\% ir ištestuoti su 20\% visų duomenų;
-	\item Geriausius rezultatus davė 10 klasių modelis (87,34\%), tačiau didesnį panaudojamumą turi 25 klasių modelis, kuris 79,18\% tikslumu  atspėdavo rodomo gesto klasę.
+	\item Geriausius rezultatus davė 10 klasių modelis (87,34\%), tačiau didesnį panaudojamumą turi 25 klasių modelis, kuris 79,18\% tikslumu prognozuodavo rodomo gesto klasę.
 \end{enumerate}
 
 
 \subsectionnonumnocontent{Išvados}
 \begin{enumerate}
-	\item Apjungtieji neuroniniai tinklai, kurie remiasi KNN ir RNN apjungtais modeliais yra labai galingas ir puikiai panaudojamas įrankis gestų kalbos atpažinime;
-	\item Pastebėta, kad apmokant RNN, jei epochų skaičius didesnis nei 50, rezultatuose nebus žymaus skirtumo;
+	\item Pastebėta, kad dinaminė gestų kalba ir jos mokymąsis yra sudėtingas procesas, reikalaujantis labai daug laiko ir pastangų;
+	\item Išsiaiškinta, kad apjungtieji neuroniniai tinklai, kurie apjungia KNT ir RNT, gali būti plačiai pritaikomi tuose uždaviniuose, kuriuose reikalinga rasti savybes kiekviename laiko momente ir tas savybes apjungti į bendrą visumą. Taip pat išsaiškinta, kad idealiu atveju tokių apjungimų nereikėtų, tačiau šiuo metu RNT akcentuojasi labiau į kitimą laike, nei į savybių atpažinimą;
+	\item Apjungtieji neuroniniai tinklai, kurie remiasi KNT ir RNT apjungtais modeliais yra labai galingas ir puikiai panaudojamas įrankis gestų kalbos atpažinime;
 	\item Išsiaiškinta, kad vaizdo įrašus skaidant į kadrus ypač svarbu atkreipti dėmesį į kadro dydį, nes tai turi labai daug įtakos apsimokymo laikui ir užimamos vietos kiekiui, tačiau kadrų mažinimas beveik neturi įtakos modelio tikslumui;
 	\item Nustatyta, kad klasių skaičius (3, 10 ar 25) neturi didelės įtakos apsimokymo tikslumui ir testavimo rezultatams;
-	\item Gauti aukšti rezultatai rodo gerai sudarytą apmokymui skirtų duomenų rinkinį, tačiau nėra aišku, koks tikslumas gautųsi testuojant ar apmokant su \textit{nešvariais} duomenimis;
+	\item Gauti aukšti rezultatai rodo gerai sudarytą apmokymui skirtų duomenų rinkinį, tačiau nėra aišku, koks tikslumas gautųsi testuojant ar apmokant su realių situacijų duomenimis;
 	\item Norint lietuvių gestų kalbos modelį pritaikyti realiame pasaulyje, reikia daugiau studijų šioje srityje ir apmokyti jį su kelis kartus didesniu LGK klasių kiekiu;
 	\item Reikėtų kaupti lietuvių gestų kalbos gestų vaizdo įrašus, kad šiuos modelius būtų galima apmokyti atpažinti daugiau klasių. Surinkus užtektinai didelį duomenų kiekį, sistema būtų pritaikyta versti gestų kalbą į rašytinę kalbą ir atvirkščiai.
 \end{enumerate}
@@ -1235,11 +1235,11 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 
 \sectionnonum{Santrumpos}
 \begin{itemize}
-	\item KNN - konvoliuciniai neuroniniai tinklai
+	\item KNT - konvoliuciniai neuroniniai tinklai
 	\item LGK - lietuvių gestų kalba
 	\item LSTM - \textit{long short-term memory}\footnote{ilga trumpalaikė atmintis}
 	\item NN - neuroniniai tinklai
-	\item RNN - Rekurentiniai neuroniniai tinklai
+	\item RNT - Rekurentiniai neuroniniai tinklai
 \end{itemize}
 
 \appendix  % Priedai
@@ -1269,7 +1269,7 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 \section{3 klasių apmokymas}
 \label{appendix:3kl}
 
-\textbf{RNN}:
+\textbf{RNT}:
 \begin{itemize}
 	\item Pirmas bandymas - oranžinė linija
 	\item Antras bandymas - mėlyna linija
@@ -1279,21 +1279,21 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/1/acc}
-	\caption{RNN: Tikslumo grafikas}
+	\caption{RNT: Tikslumo grafikas}
 	\label{img:3acc}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/1/val}
-	\caption{RNN: Pasitikrinimo grafikas}
+	\caption{RNT: Pasitikrinimo grafikas}
 	\label{img:3val}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/1/loss}
-	\caption{RNN: Praradimo grafikas}
+	\caption{RNT: Praradimo grafikas}
 	\label{img:3loss}
 \end{figure}
 
@@ -1301,7 +1301,7 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 \section{10 klasių apmokymas}
 \label{appendix:10kl}
 
-\textbf{KNN}:
+\textbf{KNT}:
 \begin{itemize}
 	\item Oranžinė linija - mokymas
 	\item Mėlyna linija - pasitikrinimas
@@ -1310,12 +1310,12 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/2/knn-acc}
-	\caption{KNN: Tikslumo grafikas}
-	\label{img:10knn-acc}
+	\caption{KNT: Tikslumo grafikas}
+	\label{img:10KNT-acc}
 \end{figure}
 
 
-\textbf{RNN}:
+\textbf{RNT}:
 \begin{itemize}
 	\item Pirmas bandymas - mėlyna linija
 	\item Antras bandymas - rausva linija
@@ -1325,21 +1325,21 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/2/acc}
-	\caption{RNN: Tikslumo grafikas}
+	\caption{RNT: Tikslumo grafikas}
 	\label{img:10acc}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/2/val}
-	\caption{RNN: Pasitikrinimo grafikas}
+	\caption{RNT: Pasitikrinimo grafikas}
 	\label{img:10val}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/2/loss}
-	\caption{RNN: Praradimo grafikas}
+	\caption{RNT: Praradimo grafikas}
 	\label{img:10loss}
 \end{figure}
 
@@ -1349,7 +1349,7 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 
 
 
-\textbf{KNN}:
+\textbf{KNT}:
 \begin{itemize}
 	\item Oranžinė linija - mokymas
 	\item Mėlyna linija - pasitikrinimas
@@ -1358,28 +1358,28 @@ Geresniems ir tikslesniems testavimo rezultatams gauti reikėtų pirmiausia paba
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/3/knn-acc}
-	\caption{KNN: Tikslumo grafikas}
-	\label{img:25knn-acc}
+	\caption{KNT: Tikslumo grafikas}
+	\label{img:25KNT-acc}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/3/acc}
-	\caption{RNN: Tikslumo grafikas}
+	\caption{RNT: Tikslumo grafikas}
 	\label{img:25acc}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/3/val}
-	\caption{RNN: Pasitikrinimo grafikas}
+	\caption{RNT: Pasitikrinimo grafikas}
 	\label{img:25val}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{img/3/loss}
-	\caption{RNN: Praradimo grafikas}
+	\caption{RNT: Praradimo grafikas}
 	\label{img:25loss}
 \end{figure}
 %\section{Eksperimentinio palyginimo rezultatai}

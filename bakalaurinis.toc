@@ -12,7 +12,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Darbo uždaviniai}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Darbo eiga}{6}
+\contentsline {subsection}{Darbo eiga}{7}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Panaudotos priemonės}{7}
 \defcounter {refsection}{0}\relax 
@@ -22,7 +22,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2.}Neprižiūrimas mokymas}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.3.}Praktinis mokymas}{10}
+\contentsline {subsection}{\numberline {1.3.}Skatinamasis mokymas}{10}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.}Neuroniniai tinklai}{11}
 \defcounter {refsection}{0}\relax 
@@ -48,7 +48,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{\numberline {2.5.2.1.}LSTM}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {2.5.2.2.}GRU}{18}
+\contentsline {paragraph}{\numberline {2.5.2.2.}GRU}{19}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{\numberline {2.5.2.3.}LSTM ir GRU skirtumai}{19}
 \defcounter {refsection}{0}\relax 
@@ -80,18 +80,20 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.3.}Modelio testavimas}{28}
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.}Duomenų rinkimo rekomendacijos}{29}
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{Rezultatai ir išvados}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{32}
+\contentsline {section}{Santrumpos}{31}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{32}
+\contentsline {section}{\MakeUppercase {Priedai}}{31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{33}
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{34}
+\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{33}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{3 priedas.\nobreakspace {}3 klasių apmokymas}{35}
+\contentsline {subsection}{3 priedas.\nobreakspace {}3 klasių apmokymas}{34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{4 priedas.\nobreakspace {}10 klasių apmokymas}{36}
+\contentsline {subsection}{4 priedas.\nobreakspace {}10 klasių apmokymas}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{5 priedas.\nobreakspace {}25 klasių apmokymas}{38}
+\contentsline {subsection}{5 priedas.\nobreakspace {}25 klasių apmokymas}{37}
