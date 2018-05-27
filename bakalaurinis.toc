@@ -82,16 +82,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{Rezultatai ir išvados}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{32}
+\contentsline {section}{Literatūra}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{32}
+\contentsline {section}{Santrumpos}{33}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{33}
+\contentsline {section}{\MakeUppercase {Priedai}}{33}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{34}
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{3 priedas.\nobreakspace {}3 klasių apmokymas}{35}
+\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{4 priedas.\nobreakspace {}10 klasių apmokymas}{36}
+\contentsline {subsection}{3 priedas.\nobreakspace {}3 klasių apmokymas}{36}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{5 priedas.\nobreakspace {}25 klasių apmokymas}{38}
+\contentsline {subsection}{4 priedas.\nobreakspace {}10 klasių apmokymas}{37}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{5 priedas.\nobreakspace {}25 klasių apmokymas}{39}
