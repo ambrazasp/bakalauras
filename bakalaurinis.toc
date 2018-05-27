@@ -70,26 +70,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.2.}Modelio apmokymas}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {3.3.2.1.}Pirmasis apmokymas}{24}
+\contentsline {paragraph}{\numberline {3.3.2.1.}3 klasių apmokymas}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {3.3.2.2.}Antrasis bandymas}{24}
+\contentsline {paragraph}{\numberline {3.3.2.2.}10 klasių apmokymas}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.3.}Trečiasis bandymas}{24}
+\contentsline {paragraph}{\numberline {3.3.2.3.}25 klasių apmokymas}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{\numberline {3.3.3.1.}Apibendrinimas}{25}
+\contentsline {paragraph}{\numberline {3.3.2.4.}Apibendrinimas}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.4.}Modelio testavimas}{25}
+\contentsline {subsubsection}{\numberline {3.3.3.}Modelio testavimas}{28}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Rezultatai ir išvados}{26}
+\contentsline {section}{Rezultatai ir išvados}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Sutartiniai žymėjimai}{27}
+\contentsline {section}{Santrumpos}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Sąvokų apibrėžimai}{28}
+\contentsline {section}{\MakeUppercase {Priedai}}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Santrumpos}{29}
+\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{33}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\MakeUppercase {Priedai}}{29}
+\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{1 priedas.\nobreakspace {}Rankų pirštų numeracija}{30}
+\contentsline {subsection}{3 priedas.\nobreakspace {}3 klasių apmokymas}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{2 priedas.\nobreakspace {}Konvoliucinio tinklo modelis}{31}
+\contentsline {subsection}{4 priedas.\nobreakspace {}10 klasių apmokymas}{36}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{5 priedas.\nobreakspace {}25 klasių apmokymas}{38}
